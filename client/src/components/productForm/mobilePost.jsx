@@ -11,7 +11,7 @@ const MobilePost=()=>{
         
 
  })
-    const sendRequest=()=>{
+    const sendRequest=async()=>{
         try{
             const response = await fetch('http://localhost:5000/productcreate/', {
                   method: 'POST',
@@ -27,7 +27,7 @@ const MobilePost=()=>{
                   else{
                       console.log(data);
                       let id = data.id;
-                      navigate(/);
+                      navigate('/');
                   }
                 }).catch (error=>{
                       console.log(error.message)
