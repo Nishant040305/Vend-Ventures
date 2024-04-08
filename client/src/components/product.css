@@ -1,0 +1,371 @@
+.product{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+.product .header{
+  text-transform: uppercase;
+}
+
+.product .header,.footer{
+    background-color:#f7f8f8;
+    padding: 20px;
+    padding-left: 80px;
+   
+    font-size: 0.8em;
+
+}
+
+.product .header-bottom-bar{
+    padding: 20px;
+    padding-left: 80px;
+    box-shadow:0 1px 1px #00000041 ;
+}
+
+.product a{
+    text-decoration: none;
+}
+
+.product .top-bar-items{
+    display: inline-block;
+    padding: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+.product .motors{
+    position: relative;
+    bottom: 10px;
+}
+
+.product .property{
+    position: relative;
+    bottom: 10px;
+}
+
+.product .top-bottom{
+    padding-top: 10px;
+}
+
+.product .country{
+    position: relative;
+    bottom: 20px;
+}
+
+.product .selectInput{
+    padding: 10px;
+    width: 200px;
+    position: relative;
+    bottom: 20px;
+    
+}
+
+.product .product .search{
+    width: 40vw;
+}
+
+.product .fa-magnifying-glass{
+    background-color:#002f34;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    position: relative;
+    bottom: 20px;
+}
+
+.product .icons{
+    position: relative;
+    bottom: 20px;
+}
+
+.product .sell-button{
+    margin-left: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #fff;
+    border-bottom: 3px solid #3a77ff;
+    border-top: 3px solid #3a77ff;
+    border-left: 3px solid #ffce32;
+    border-right: 3px solid #23e5db;
+    color: #000;
+    
+}
+
+.product .top-bar-icons{
+    padding: 20px;
+    font-size: 20px;
+}
+
+.product li{
+    display: inline-block;
+    padding-right:10px ;
+    font-size: 0.8em;
+}
+
+.product li:hover{
+    cursor: pointer;
+    color:#46aca9 ;
+
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+.product   body {
+    font-family: sans-serif;
+    background: #C1908B;
+  }
+  
+.product   .container {
+    max-width: 75%;
+    margin: auto;
+    height: 80vh;
+    margin-top: 5%;
+    background: white;
+    box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+ .product  .left, .right {
+    width: 50%;
+    padding: 30px;
+  }
+  
+.product   .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.product   .flex1 {
+    display: flex;
+  }
+  
+  .product .main_image {
+    width: auto;
+    height: auto;
+  }
+  
+ .product  .option img {
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+  }
+  
+ .product  .right {
+    padding: 50px 100px 50px 50px;
+  }
+  
+ .product  h3 {
+    color: #af827d;
+    margin: 20px 0 20px 0;
+    font-size: 25px;
+  }
+  
+ .product  h5,
+ .product  p,
+ .product  small {
+    color: #837D7C;
+  }
+  
+ .product  h4 {
+    color: red;
+  }
+  
+ .product  p {
+    margin: 20px 0 50px 0;
+    line-height: 25px;
+  }
+  
+ .product  h5 {
+    font-size: 15px;
+  }
+  
+ .product  label,
+  .product .add span,
+ .product  .color span {
+    width: 25px;
+    height: 25px;
+    background: #000;
+    border-radius: 50%;
+    margin: 20px 10px 20px 0;
+  }
+  
+  .product .color span:nth-child(2) {
+    background: #EDEDED;
+  }
+  
+ .product  .color span:nth-child(3) {
+    background: #D5D6D8;
+  }
+  
+ .product  .color span:nth-child(4) {
+    background: #EFE0DE;
+  }
+  
+ .product  .color span:nth-child(5) {
+    background: #AB8ED1;
+  }
+  
+ .product  .color span:nth-child(6) {
+    background: #F04D44;
+  }
+  
+ .product  .add label,
+ .product  .add span {
+    background: none;
+    border: 1px solid #C1908B;
+    color: #C1908B;
+    text-align: center;
+    line-height: 25px;
+  }
+  
+ .product  .add label {
+    padding: 10px 30px 0 20px;
+    border-radius: 50px;
+    line-height: 0;
+  }
+  
+.product   button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: #C1908B;
+    color: white;
+    margin-top: 20%;
+    border-radius: 30px;
+    margin-bottom: 20%;
+  }
+
+ .product  button:hover{
+    cursor: pointer;
+    color:#46aca9 ;
+    background: rgb(140, 197, 238);
+  }
+  
+   @media only screen and (max-width:768px) {
+    .product .container {
+      max-width: 90%;
+      margin: auto;
+      height: auto;
+    }
+  
+    .product .left, .product .right {
+      width: 100%;
+    }
+  
+    .product .container {
+      flex-direction: column;
+    }
+  }
+  
+ @media only screen and (max-width:511px) {
+    .product .container {
+      max-width: 100%;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .product .left, .product .right {
+      padding: 0;
+    }
+  
+    .product img {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .product .option {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  
+ .product  .slide{
+    height: 400px;
+    width: 600px;
+  }
+
+ .product  .profile{
+    display: inline-block;
+  }
+
+  .product .circular{
+    border-radius: 100%;
+    margin: 10px;
+    
+  }
+
+ .product  .seller{
+    display: inline-block;
+  }
+
+ .product  .post{
+    margin-top: 10px;
+  }
+
+ .product  h3{
+    margin-right: 200px;
+  }
+.product   i{
+    padding: 10px;
+  }
+ .product  h3,i{
+    display: inline;
+  }
+
+ .product  .fa-share-nodes{
+    font-size: 1.5em;
+  }
+
+ .product  .fa-heart{
+    font-size: 1.5em;
+  }
+
+.product   i,.button{
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .product .footer-links-head{
+   
+    margin-bottom: 10px;
+}
+.product .footer-links{
+    list-style-type: none;
+    margin-bottom: 3px;
+    color: #6c6c6c;;
+    display: flex;
+}
+.product .footer-column{
+    margin-right: 20px;
+    display: inline-block;
+   width: 15%;
+}
+.product .social-footer-links{
+    margin-right:10px ;
+}
+.product .footer-credit{
+    text-align: end;
+    
+}
+.product .footer-credit-bg{
+    padding: 20px;
+    padding-right: 80px;
+    background-color: #C1908B;
+}
+.product .footer-credit-p{
+    color: #fff;
+    font-size: 10px;
+}
+
+.product .footer-column2{
+  position: relative;
+  bottom: 40px;
+}
