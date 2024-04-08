@@ -7,7 +7,7 @@ const Card=(props)=>{
     return(
         <div className="mainpage-cards card">
             <img className="card-img-top" alt="..."src="vendVentures.png"></img>
-            <div class="card-body">
+            <div className="card-body">
             <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>Brain</div><img src="heart.png"></img></div>
             
             
