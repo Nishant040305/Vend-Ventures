@@ -72,3 +72,16 @@
     height:7rem;
 
 }
+.field-form{
+    cursor:pointer;
+}
+.form-image{
+    width:120px;
+    height:120px;
+}
+.displayName-form{
+    padding:40px;
+    font-size:20px;
+    font-weight: 600;
+    align-items: center;
+}

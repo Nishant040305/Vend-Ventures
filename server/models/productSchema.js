@@ -6,15 +6,25 @@ const productSchema = new Schema(
             type:String,
             required:true
         },
-        title:{
+        state:{
             type:String,
-            required:true,
+            default:'true'
+        },
+        location:{
+            type:String,
+            required:true
         },
         category:{
-            type:String
+            type:String,
+            required:true
+        },
+        title:{
+            type:String,
+            required:true
         },
         description:{
-            type:String
+            type:Object,
+            default:{}, // {desc, area, ...}
         },
         price:{
             type:String,
@@ -23,11 +33,8 @@ const productSchema = new Schema(
         images:{
             type:[String]
         },
-        chatId:{
+        chats:{
             type:[String]
-        },
-        location:{
-            type:String
         },
         phoneNumber:{
             type:String

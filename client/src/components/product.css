@@ -113,17 +113,17 @@
 }
 
 
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
   }
-  
-.product   body {
+   */
+/* .product   body {
     font-family: sans-serif;
     background: #C1908B;
   }
-  
+   */
 .product   .container {
     max-width: 75%;
     margin: auto;
@@ -162,12 +162,12 @@
     padding: 50px 100px 50px 50px;
   }
   
- .product  h3 {
+  /* .product  h3 {
     color: #af827d;
     margin: 20px 0 20px 0;
     font-size: 25px;
-  }
-  
+  } */
+  /*
  .product  h5,
  .product  p,
  .product  small {
@@ -187,7 +187,7 @@
     font-size: 15px;
   }
   
- .product  label,
+ .product  label, */
   .product .add span,
  .product  .color span {
     width: 25px;
@@ -232,17 +232,7 @@
     line-height: 0;
   }
   
-.product   button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background: #C1908B;
-    color: white;
-    margin-top: 20%;
-    border-radius: 30px;
-    margin-bottom: 20%;
-  }
+
 
  .product  button:hover{
     cursor: pointer;
@@ -307,11 +297,11 @@
     display: inline-block;
   }
 
- .product  .post{
-    margin-top: 10px;
-  }
+ /* .product  .post{
+    margin-top: 0;
+  } */
 
- .product  h3{
+ /* .product  h3{
     margin-right: 200px;
   }
 .product   i{
@@ -319,7 +309,7 @@
   }
  .product  h3,i{
     display: inline;
-  }
+  } */
 
  .product  .fa-share-nodes{
     font-size: 1.5em;
@@ -369,3 +359,53 @@
   position: relative;
   bottom: 40px;
 }
+.product-image-section{
+  background-color: #000;
+}
+.product .left {
+  background-color:white;
+}
+.product .right {
+  background-color:white;
+}
+.product-chat-bag {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: #C1908B;
+    color: white;
+    /* margin-top: 2%; */
+    border-radius: 30px;
+    /* margin-bottom: 2%; */
+  }
+.Dcrrchxaoi{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container-productDetails{
+  width:230rem;
+}
+.product-title{
+  font-size:2.50rem;
+}
+.product .right{
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items:stretch;
+}
+.align-left{
+  align-items: start;
+  margin-left:-17rem;
+}
+.color-change-product{
+  color:#837D7C;
+}
+/* .chatSectsnafiXsf{
+  display:flex;
+  flex-direction:column;
+  flex:wrap;
+} */

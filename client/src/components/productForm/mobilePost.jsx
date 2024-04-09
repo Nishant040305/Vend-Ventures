@@ -1,11 +1,11 @@
 import React,{useState} from "react";
 import "./mobilePost.css";
-import {useNavigate,useParams} from "react-router-dom";
+import {useNavigate,useParams,useLocation} from "react-router-dom";
 
 const MobilePost=()=>{
-    // const {id}=useParams();
-    const id ="9845612";
+    const {state}=useLocation();
     const navigate = useNavigate()
+
     const [des,setDes] = useState(
         {
             brand:"",
@@ -15,7 +15,7 @@ const MobilePost=()=>{
         }
     )
     const [ user, setUser] = useState({
-        userId:id,
+        userId:state.userId,
         location:"",
         category:"Mobile",
         title:"",
@@ -110,6 +110,11 @@ const MobilePost=()=>{
                     <input type="text" className="data-mobile-input" name="location" value={user.location} onChange={handleChange} placeholder="     Address"/>
                 </section>
                 <section className="mobilePost-section">
+                    <div className="mobilePost-title" style={{marginBottom:20}}>PERSEONAL DETAILS*</div>
+                    <div style={{display:"flex"}}>
+                    <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
+                    <div className="displayName-form">{state.displayName}</div>
+                    </div>
                     <div className="mobilePost-title">Phone number</div>
                     <input type="text" className="data-mobile-input" name="phoneNumber" value={user.phoneNumber} onChange={handleChange} />
                 </section>
