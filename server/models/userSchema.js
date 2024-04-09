@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const userSchema = new Schema(
     {
-        googleId:{
+        userId:{
             type:String,
             required:true
         },
@@ -10,7 +10,7 @@ const userSchema = new Schema(
             type:String,
             required:true,
         },
-        email:{
+        emails:{
             type:String
         },
         image:{

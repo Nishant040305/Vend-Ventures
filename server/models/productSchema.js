@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const productSchema = new Schema(
     {
-        productId:{
-            type:String,
-            required:true
-        },
         userId:{
             type:String,
             required:true
@@ -31,6 +27,9 @@ const productSchema = new Schema(
             type:[String]
         },
         location:{
+            type:String
+        },
+        phoneNumber:{
             type:String
         }
     }

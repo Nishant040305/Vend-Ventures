@@ -1,0 +1,10 @@
+{
+    "name": "vendVentures",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "concurrently \"npm run start --prefix ./server\" \"npm run start --prefix ./client\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
