@@ -1,9 +1,46 @@
 import React from "react";
-
-const Form =()=>{
+import "./mobilePost.css";
+import {useNavigate,useLocation} from "react-router-dom";
+const Field =(props)=>{
+    let {state} = useLocation();
+    const navigate = useNavigate();
+    const post = (link)=>{
+        navigate(`/post/${link}`,{state:state});
+    }
     return(
-        <div className="app">
-            <div id="container" className="_3HfeF"><header className="PBLG7 _3ysge"><div className="xDXhj"><nav className="FuVin"><span className="rui-PL7PB _31pp7" role="button" tabIndex="0"><i className="rui-CXaZ2 rui-XRg9H" title=""></i></span></nav><div className="_2bxIM"><h1 className="_86L9X"><a rel="" data-aut-id="" aria-current="page" className="rui-CXaZ2 " href="/en-in">OLX</a></h1><h1 className="_1GYzB"><span>Post your Ad</span></h1></div></div></header><main id="main_content" className="_1oFYt puYxI" data-aut-id="page-main-content"><div className="_1B-ev _2qi8N"><div className="rui-eCfYo KKh94"><div className="rui-jIycK rui-3EzFm rui-Iumkr rui-jym4N rui-VAm0G rui-JYJBp rui-kEGLi rui-odoOW"><h1 className="_1pOIM"><span>Post your Ad</span></h1><div className="_3G7Lz"><div><h3 className="_2G7w8"><span>Choose a category</span></h3><div className="rui-eCfYo _3gfRo" data-aut-id="sessionWithTittle"><ul className="_2W_x5 rui-jIycK rui-SYm6T rui-S9mOo rui-ZvM8x rui-VAm0G" data-aut-id="categoryLevel"><li data-aut-id="item" className="_1NzQs"><svg width="30px" height="30px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M744.747 124.16l38.4 33.28 36.949 258.731 107.221 107.179 11.349 27.435v193.963l-38.827 38.784h-38.741v116.352h-77.568v-116.352h-543.061v116.352h-77.568v-116.352h-38.741l-38.827-38.827v-193.877l11.349-27.435 107.264-107.221 36.949-258.731 38.4-33.28h465.493zM768.555 474.325h-513.109l-92.544 92.501v139.093h698.197v-139.093l-92.544-92.501zM298.667 550.784c32.128 0 58.197 26.027 58.197 58.197 0 32.128-26.027 58.155-58.197 58.155-32.128 0-58.197-26.027-58.197-58.155s26.027-58.197 58.197-58.197zM725.333 550.784c32.128 0 58.197 26.027 58.197 58.197 0 32.128-26.027 58.155-58.197 58.155-32.128 0-58.197-26.027-58.197-58.155s26.027-58.197 58.197-58.197zM711.083 201.685h-398.165l-27.904 195.115h453.888l-27.861-195.072z"></path></svg><span className="_1Ning"> Cars </span><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M277.333 85.333v60.331l366.336 366.336-366.336 366.336v60.331h60.331l409.003-408.981v-35.307l-409.003-409.045z"></path></svg></li><li data-aut-id="item" className="_1NzQs"><svg width="30px" height="30px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M356.848 85.333l271.515 179.315v174.318h248.824l61.479 60.925v377.85l-61.479 60.925h-730.376l-61.479-60.925v-613.093l271.515-179.315zM356.848 177.586l-193.939 128.192v540.060l16.097 15.952h100.267v-192.192h155.152v192.192h116.364v-556.012l-193.939-128.192zM844.994 515.844h-216.63v345.946h216.63l16.097-15.952v-314.042l-16.097-15.952zM783.316 640v85.333h-85.333v-85.333h85.333zM352 432c29.455 0 53.333 23.878 53.333 53.333s-23.878 53.333-53.333 53.333c-29.455 0-53.333-23.878-53.333-53.333s23.878-53.333 53.333-53.333z"></path></svg><span className="_1Ning"> Properties </span><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M277.333 85.333v60.331l366.336 366.336-366.336 366.336v60.331h60.331l409.003-408.981v-35.307l-409.003-409.045z"></path></svg></li><li data-aut-id="item" className="_1NzQs"><svg width="30px" height="30px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M743.68 85.333l66.987 67.84v701.227l-63.573 84.267h-471.253l-62.507-85.333v-700.373l67.627-67.627h462.72zM708.053 170.667h-391.893l-17.493 17.707v637.653l20.053 27.307h385.92l21.333-27.52v-637.653l-17.92-17.493zM512 682.667c23.564 0 42.667 19.103 42.667 42.667s-19.103 42.667-42.667 42.667c-23.564 0-42.667-19.103-42.667-42.667s19.////103-42.667 42.667-42.667z"></path></svg><span className="_1Ning"> Mobiles </span><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M277.333 85.333v60.331l366.336 366.336-366.336 366.336v60.331h60.331l409.003-408.981v-35.307l-409.003-409.045z"></path></svg></li><li data-aut-id="item" className="_1NzQs"><svg width="30px" height="30px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M341.665 89.769l-82.848 72.739v66.327h-70.534l-98.517 98.906v468.388l95.92 104.215h649.246l99.298-102.676v-478.475l-107.179-90.359h-58.539v-2.275h-3.907v-65.087l-85.419-71.703h-337.522zM350.693 204.115l25.616-22.448h269.404l26.995 22.677v24.491h-322.015v-24.72zM181.668 365.697l44.756-44.963h567.065l48.844 41.17v79.17h-660.665v-75.381zM696.787 595.514v-62.538h145.545v227.542l-46.362 47.901h-569.959l-44.341-48.156v-227.29h127.763v62.538l31.132 17.116 31.132-17.116v-62.538h262.832v62.538l31.132 17.116 31.132-17.116z"></path></svg><span className="_1Ning"> Bikes </span><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M277.333 85.333v60.331l366.336 366.336-366.336 366.336v60.331h60.331l409.003-408.981v-35.307l-409.003-409.045z"></path></svg></li><li data-aut-id="item" className="_1NzQs"><svg width="30px" height="30px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M149.76 128l-64.427 62.848v480.853l69.333 67.84h317.781l0.725 75.477h-169.6v80.981h416.128v-80.981h-161.621l-0.683-75.435h315.648l65.621-68.693v-482.389l-75.733-60.501h-713.173zM170.24 638.72v-414.848l15.232-14.848h646.656l21.632 17.28v413.184l-18.176 19.072h-645.12l-20.224-19.84z"></path></svg><span className="_1Ning"> Electronics &amp; Appliances </span><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd"><path className="rui-UJ1uk" d="M277.333 85.333v60.331l366.336 366.336-366.336 366.336v60.331h60.331l409.003-408.981v-35.307l-409.003-409.045z"></path></svg></li></ul></div></div></div></div></div></div></main><div><footer className="_3qfP0" data-aut-id="footer" id="footer"><div className="_3r_j1" data-aut-id="bottom-footer"><div className="_2ilyY"><section className="_2TEE-"><span>Free Classifieds in India</span>. © 2006-2024 OLX</section><section className="_2TEE- n8Ymc"><div className="rcVOn"></div> <a rel="" data-aut-id="" className="QUhEK" href="/en-in/sitemap/most-popular">Sitemap</a></section></div></div></footer></div></div>
+        <section className="field-form mobilePost-section" onClick={(e)=>{post(props.link)}}>{props.name}</section>
+    )
+}
+const fieldArray = [
+    {
+        name:"Mobile Phones",
+        link:"mobile",
+    },
+    {
+        name:"Automobiles/Cars",
+        link:"car",
+    },
+    {
+        name:"Real state",
+        link:"realstate",
+    },
+    {
+        name:"Electronic Appliances",
+        link:"electronics",
+    },
+]
+const Form =()=>{
+    
+    return(
+        <div className="form" style={{display:"flex",flexDirection:"row", justifyContent:"space-around"}}>
+            <div style={{display:"flex",flexDirection:"column", justifyContent:"space-around"}}>
+                <div className="mobilePost-title head" >POST YOUR AD</div>
+                        <section className="categories-form">
+                        {fieldArray.map((field, index) => (<Field name={field.name} link={field.link}/>))}
+                        </section>
+                    </div>
+                        
+
         </div>
     )
 }

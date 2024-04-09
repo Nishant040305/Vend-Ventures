@@ -2,23 +2,29 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const productSchema = new Schema(
     {
-        productId:{
+        userId:{
             type:String,
             required:true
         },
-        userId:{
+        state:{
+            type:String,
+            default:'true'
+        },
+        location:{
+            type:String,
+            required:true
+        },
+        category:{
             type:String,
             required:true
         },
         title:{
             type:String,
-            required:true,
-        },
-        category:{
-            type:String
+            required:true
         },
         description:{
-            type:String
+            type:Object,
+            default:{}, // {desc, area, ...}
         },
         price:{
             type:String,
@@ -27,10 +33,10 @@ const productSchema = new Schema(
         images:{
             type:[String]
         },
-        chatId:{
+        chats:{
             type:[String]
         },
-        location:{
+        phoneNumber:{
             type:String
         }
     }

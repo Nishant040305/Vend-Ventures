@@ -28,6 +28,9 @@ const Navbar =()=>{
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
+    const showAdd = ()=>{
+        navigate('/post',{ state: userdata });
+    }
     const getUser = async()=>{
         try {
             const response = await axios.get("http://localhost:5000/login/sucess",{withCredentials:true});
@@ -70,6 +73,7 @@ const Navbar =()=>{
     }
     const windowWidth = useWindowWidth();
     const isVisible = windowWidth >=1121 ;
+    console.log(userdata);
     return(
         <div className="header">
         <div className="dashboard-navbar">
@@ -102,9 +106,9 @@ const Navbar =()=>{
                         </svg>
                     </div>
                 <hr className="vertical-line"/>
-                {userdata.image?<div style={{display:"flex",flexDirection:"row"}}><img className="rounded-circle img-profile-icon" src={userdata.image} ></img><button type="button" className="btn sell-button login-button-navbar"  onClick={logout}>Logout</button></div>:<button type="button" className="btn sell-button login-button-navbar" onClick={visibleLogin}>login</button>}
+                {userdata?<div style={{display:"flex",flexDirection:"row"}}><img className="rounded-circle img-profile-icon" src={userdata.image} ></img><button type="button" className="btn sell-button login-button-navbar"  onClick={logout}>Logout</button></div>:<button type="button" className="btn sell-button login-button-navbar" onClick={visibleLogin} id="loginBtn">login</button>}
                 
-                <button className="sell-button btn " type="button">SELL</button>
+                {userdata?<button className="sell-button btn " type="button" onClick={showAdd}>SELL</button>:<button className="sell-button btn " type="button" onClick={visibleLogin}>SELL</button>}
             </form>
             <div className="header-bottom-bar">
                 <ul className="navbar-menu-cat">

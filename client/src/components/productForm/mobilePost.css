@@ -72,6 +72,21 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
+
 button[type="submit"]:hover {
     background-color: #236b23;
+}
+}
+.field-form{
+    cursor:pointer;
+}
+.form-image{
+    width:120px;
+    height:120px;
+}
+.displayName-form{
+    padding:40px;
+    font-size:20px;
+    font-weight: 600;
+    align-items: center;
 }

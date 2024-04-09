@@ -1,15 +1,53 @@
 import React from "react";
 import "./product.css";
 import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
+import {useState,useEffect} from "react";
+import {useParams} from "react-router-dom";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+
 const Product =()=>{
+  var dt; // Product Schema is stored here
+    const navigate = useNavigate();
+    const {productID} = useParams();
+    const fetchProduct = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/productinfo/', {
+                params: {
+                    id: productID
+                },
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            if (response.status !== 200) {
+                throw new Error('Failed to fetch data');
+            }
+            const data = response.data;
+            if (data.error) {
+                throw new Error(data.error);
+            } else {
+                console.log(data);
+                dt = data.data;
+                if (dt == null) {
+                    navigate("/error");
+                }
+            }
+        } catch (e) { console.error(e) }
+    }
+    useEffect(() => {
+        fetchProduct()
+    }, [])
+
     return(
         <>
         <Navbar></Navbar>
         <div className="product">
                 
-      <section>
-        <div className="container flex">
-          <div className="left">
+      <section >
+        <div className="container-productDetails container flex">
+          <div className="left n">
             <div className="main_image">
               <img src="images/img1.jpg" className="slide"/>
             </div>
@@ -21,22 +59,23 @@ const Product =()=>{
               <img src="images/img5.jpg" onclick="img('images/img5.jpg')"/>
               
             </div>
+            <div className="product-description">
+                <h3>Description</h3>
+            </div>
           </div>
           <div className="right">
-            
-            <h3>Description</h3>
-            
-            
+            <div className="Dcrrchxaoi">
+            <h3 className="product-title">Title</h3>
+            <div>
             <i className="fa-solid fa-share-nodes"></i>
             <i className="fa-regular fa-heart"></i>
+            </div>
             
+            </div>
             
-            
-            
-            <h4> <small>Rs.</small> 95,000</h4>
-            <p>Sony a6400 camera </p>
-            
-            <p>samudrapur,Maharastra,India</p>
+            <h4 className="align-left "> <small className="color-change-product">Rs.</small> 95,000</h4>
+            <p className="align-left color-change-product" >&ensp;&ensp;&ensp;&ensp;Sony a6400 camera </p>
+            <p className="align-left color-change-product ">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;samudrapur,Maharastra,India</p>
             <hr/>
             <div className="profile">
                 <div className="seller">
@@ -47,91 +86,21 @@ const Product =()=>{
                 </div>
                 
             </div>
-            <button >Chat with seller</button>
-            <h5  className="post">Posted in</h5>
-            <p>Samudrapur,Maharashtra , India</p>
-            <button >Add to Bag</button>
+            <div className="chatSectsnafiXsf">
+            <button className="product-chat-bag">Chat with seller</button>
+            <h5  className="align-left ">Posted in</h5>
+            <br/>
+            <div className="color-change-product align-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Samudrapur,Maharashtra , India</div>
+            <button className="product-chat-bag">Add to Bag</button>
+            </div>
+            
           </div>
         </div>
       </section>
-      <footer style={{marginTop: 30}}>
-        <div className="footer">
-            <div className="footer-column">
-                <p className="footer-links-head"><strong>POPULAR LOCATIONS</strong></p>
-                <ul>
-                    <li className="footer-links">Kolkata</li>
-                    <li className="footer-links">Mumbai</li>
-                    <li className="footer-links">Chennai</li>
-                    <li className="footer-links">Pune</li>
-                </ul>
-            </div>
-
-
-            <div className="footer-column">
-                <p className="footer-links-head"><strong>TRENDING LOCATIONS</strong></p>
-                <ul>
-                    <li className="footer-links">Bhubaneshwar</li>
-                    <li className="footer-links">Hyderabad</li>
-                    <li className="footer-links">Chandigarh</li>
-                    <li className="footer-links">Nashik</li>
-                </ul>
-            </div>
-
-            <div className="footer-column">
-                <p className="footer-links-head"><strong>ABOUT US</strong></p>
-                <ul>
-                    <li className="footer-links">Group</li>
-                    <li className="footer-links">Blog</li>
-                    <li className="footer-links">Contact Us</li>
-                    <li className="footer-links">Business</li>
-                    
-                </ul>
-            </div>
-
-
-            <div className="footer-column">
-                <p className="footer-links-head"><strong>VEND VEINTURS</strong></p>
-                <ul>
-                    <li className="footer-links">Help</li>
-                    
-                    <li className="footer-links">Sitemap</li>
-                    <li className="footer-links">Terms of Use</li>
-                    <li className="footer-links">Privacy Policy</li>
-                   
-                </ul>
-            </div>
-
-
-            <div className="footer-column footer-column2">
-                <p className="footer-links-head"><strong>FOLLOW US</strong></p>
-                <div className="social-footer-links" style={{width:600}}>
-                    <span className="social-footer-links">
-                        <i className="fa-brands fa-facebook"></i>
-                    </span>
-                    <span className="social-footer-links">
-                        <i className="fa-brands fa-twitter"></i>
-                    </span>
-                    <span className="social-footer-links">
-                        <i className="fa-brands fa-youtube"></i>
-                    </span>
-                    <span className="social-footer-links">
-                        <i className="fa-brands fa-square-instagram"></i>
-                    </span>
-                </div>
-
-               
-            </div>
-           
-        </div>
-        <div className="footer-credit-bg">
-            <div className="footer-credit">
-                <p className="footer-credit-p"><strong className="footer-credit-p">All rights reserved © 2024 VEND VEINTURS</strong></p>
-            </div>
-        </div>
-
-    </footer>
-      
+        
     </div>
+    <Footer>
+    </Footer>
     </>
     )
 }

@@ -4,6 +4,9 @@
   "description": "",
   "main": "backend.js",
   "scripts": {
+    "start": "nodemon controller/backend.js",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +23,8 @@
     "mongoose": "^8.3.0",
     "passport": "^0.7.0",
     "passport-google-oauth2": "^0.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

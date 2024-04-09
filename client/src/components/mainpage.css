@@ -1,6 +1,11 @@
 .mainpage-cards{
     width:18rem;
     margin:1rem;
+    cursor:pointer;
+}
+.heart{
+    width:20px;
+    height: 20px;
 }
 .mainpage-card-container{
     display:flex;
