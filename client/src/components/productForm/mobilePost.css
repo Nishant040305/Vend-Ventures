@@ -1,74 +1,77 @@
-.mobilePost{
-    display:flex;
-    justify-content: space-around;
+body {
+    font-family:  sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
-.mobilePost-section{
-    padding:10px;
-    width:30rem;
-    border:2px solid rgb(206, 206, 206);
-}
-.mobilePost-title{
 
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     text-align: left;
-    font-size: 17px;
-    margin-left:20px;
-    font-weight: 600;
+}
+.cat a{
+    color: #333;
+    margin-left: 20px;
 }
 
-.mobileheading{
-    margin-top:20px;
-    text-align: left;
-    margin-left:20px;
+.heading {
+    text-align: center;
+    font-weight: 700;
+    
+}
+.header{
+    margin-bottom: 20px;
 }
 
-.data-mobile-input{
-    align-self: flex-start;
-    margin-left:20px;
-    margin-top:10px;
-    width:20rem;
-    height:3rem;
-    border-radius:10px;
-    border:1px solid rgba(0, 0, 0, 0.221);
+.head2 {
+    font-size: 24px;
+    font-weight: 550;
+    color: #2c882c;
+    margin-bottom: 10px;
 }
-.mobilePost-section{
-    display:flex;
-    flex-direction:column;
-}
-.mobile-data{
-    display:flex;
-    flex-direction:column;
-}
-.Xcyux{
-    height:6rem;
-}
-.info-input{
-    color:rgb(94, 94, 94);
-    font-size:10px;
-    margin-left:-1rem;
-}
-.mobilePost-title .head{
-    padding-left:15rem;
-}
-.head{
-    margin-top:2rem;
-    margin-left:10rem;
-}
-.info-input-title{
-    margin-left:-15rem;
-    color:rgb(94, 94, 94);
-    font-size:15px;
 
+.labels {
+    margin-bottom: 20px;
 }
-.mobilePost-button{
-    width:6rem;
-    height:3rem;
-    margin-left:1rem;
-    margin-top:1rem;
-    background-color: rgb(168, 169, 168);
-    color:white;
 
+.label {
+    font-weight: bold;
+    color: #2c882c;
 }
-.post{
-    height:7rem;
 
+input[type="text"],
+input[type="number"],
+input[type="tel"]
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2c882c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #236b23;
 }
