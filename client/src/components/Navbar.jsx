@@ -73,12 +73,12 @@ const Navbar =()=>{
     }
     const windowWidth = useWindowWidth();
     const isVisible = windowWidth >=1121 ;
-    console.log(userdata);
+    // //console.log(userdata);
     return(
         <div className="header">
         <div className="dashboard-navbar">
             <form>          
-                <img className="logo_icon" src="vendVentures.png"></img>
+                <img className="logo_icon" src="/vendVentures.png"></img>
                         <div style={{display:"flex"}}>
                             <div className="_1JkUe">
                                 <div data-aut-id="locationBox" className="bGCL7">

@@ -28,6 +28,10 @@ const fieldArray = [
         name:"Electronic Appliances",
         link:"electronics",
     },
+    {
+        name:"Automobiles/Motor Cycle",
+        link:"motorcycle"
+    }
 ]
 const Form =()=>{
     

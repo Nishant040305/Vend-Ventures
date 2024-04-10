@@ -1,0 +1,109 @@
+.realstate {
+    font-family:  sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.realstate .container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+.cat a{
+    color: #333;
+    margin-left: 20px;
+}
+
+.realstate .heading {
+    text-align: center;
+    
+}
+.realstate .header{
+    margin-bottom: 20px;
+}
+
+
+.realstate .head2 {
+    font-size: 24px;
+    font-weight: 550;
+    color: #2c882c;
+    margin-bottom: 10px;
+}
+
+.realstate .labels {
+    margin-bottom: 20px;
+}
+
+.realstate .label {
+    font-weight: bold;
+    color: #2c882c;
+}
+
+.realstate input[type="text"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.realstate input[type="number"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.realstate input[type="tel"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.realstate select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.realstate textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.realstate button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2c882c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.realstate button[type="submit"]:hover {
+    background-color: #236b23;
+}

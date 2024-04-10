@@ -1,4 +1,4 @@
-body {
+.carpost {
     font-family:  sans-serif;
     background-color: #f9f9f9;
     color: #333;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-.container {
+.carpost .container {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
@@ -20,36 +20,32 @@ body {
     margin-left: 20px;
 }
 
-.heading {
+.carpost .heading {
     text-align: center;
     
 }
-.header{
+.carpost .header{
     margin-bottom: 20px;
 }
 
 
-.head2 {
+.carpost .head2 {
     font-size: 24px;
     font-weight: 550;
     color: #2c882c;
     margin-bottom: 10px;
 }
 
-.labels {
+.carpost .labels {
     margin-bottom: 20px;
 }
 
-.label {
+.carpost .label {
     font-weight: bold;
     color: #2c882c;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="tel"]
-select,
-textarea {
+.carpost input[type="text"]{
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -58,7 +54,43 @@ textarea {
     font-size: 16px;
 }
 
-button[type="submit"] {
+.carpost input[type="number"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.carpost input[type="tel"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.carpost select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.carpost textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.carpost button[type="submit"] {
     display: block;
     width: 100%;
     padding: 15px;
@@ -72,6 +104,17 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.carpost button[type="submit"]:hover {
     background-color: #236b23;
+}
+.mobilePost-button{
+    width:6rem;
+    height:3rem;
+    margin-left:1rem;
+    margin-top:1rem;
+    background-color: #236b23;
+    color:white;
+    border-radius: 10px;
+    border:0;
+
 }

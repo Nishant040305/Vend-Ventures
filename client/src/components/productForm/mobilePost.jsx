@@ -3,27 +3,32 @@ import "./mobilePost.css";
 import {useNavigate,useParams,useLocation} from "react-router-dom";
 
 const MobilePost=()=>{
+    const [images, setImages] = useState([]);
     const {state}=useLocation();
     const navigate = useNavigate()
-
+    const [userdata,setUserd] = useState(state)
     const [des,setDes] = useState(
         {
             brand:"",
-        },
-        {
             description:"",
         }
     )
+
     const [ user, setUser] = useState({
-        userId:state.userId,
+        // userId:"t",
         location:"",
         category:"Mobile",
         title:"",
         location:"",
         phoneNumber:"",
-        description:{}
+        description:{},
+        images:[]
  })
     const sendRequest=async()=>{
+        //console.log(user);
+        const formData = new FormData();
+        images.forEach((image, index) => {
+            formData.append(`image${index}`, image)});
         try{
             const response = await fetch('http://localhost:5000/productcreate/', {
                   method: 'POST',
@@ -37,18 +42,16 @@ const MobilePost=()=>{
                       throw new Error(data.error);
                   }
                   else{
-                      console.log(data);
-                      let id = data.id;
                       navigate('/');
                   }
                 }).catch (error=>{
-                      console.log(error.message)
+                      //console.log(error.message)
                     
                 }) 
                 
             }
             catch(err){
-              console.log("Some error occured");
+              //console.log("Some error occured");
             }
     }
     const handleChange = e => {
@@ -57,7 +60,11 @@ const MobilePost=()=>{
             ...user,
             [name]: value
         })
-        console.log(user);
+        //console.log(user);
+    }
+    const handleImageChange = e => {
+        setImages([...e.target.files]); // Convert the FileList to an array
+        setUser(images);
     }
     const handleChangeD = e => {
         const { name, value } = e.target
@@ -69,11 +76,11 @@ const MobilePost=()=>{
             ...user,
             ["description"]:des
         })
-        console.log(user);
+        //console.log(user);
     }
     return(
         <div className="mobilePost">
-            <form>
+            <div>
             <div className="mobilePost-title head">POST YOUR AD</div>
 
                 <section className="mobilePost-section">
@@ -103,7 +110,9 @@ const MobilePost=()=>{
                     <div className="mobileheading">Price*</div>
                     <input className="data-mobile-input" name="price" value={user.price} onChange={handleChange}></input>
                 </section>
-                <section className="mobilePost-section"></section>
+                <section className="mobilePost-section">
+                    <input type="file" multiple onChange={handleImageChange} />
+                </section>
 
                 <section className="mobilePost-section">
                     <div className="mobilePost-title">CONFIRM YOUR LOCATION</div>
@@ -112,8 +121,8 @@ const MobilePost=()=>{
                 <section className="mobilePost-section">
                     <div className="mobilePost-title" style={{marginBottom:20}}>PERSEONAL DETAILS*</div>
                     <div style={{display:"flex"}}>
-                    <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
-                    <div className="displayName-form">{state.displayName}</div>
+                    <img className="rounded-circle form-image" style={{marginLeft:30}}src={userdata&&userdata.image}></img>
+                    <div className="displayName-form">{userdata&&userdata.displayName}</div>
                     </div>
                     <div className="mobilePost-title">Phone number</div>
                     <input type="text" className="data-mobile-input" name="phoneNumber" value={user.phoneNumber} onChange={handleChange} />
@@ -121,7 +130,7 @@ const MobilePost=()=>{
                 <section className="mobilePost-section post">
                     <button className=" btn mobilePost-button" onClick={(e)=>{sendRequest()}}>Post now</button>
                 </section>
-            </form>
+            </div>
         </div>
     )
 }

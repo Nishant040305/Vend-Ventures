@@ -409,3 +409,11 @@
   flex-direction:column;
   flex:wrap;
 } */
+.description-data{
+  margin-left:3rem;
+  text-align:start;
+}
+.product-title,.color-change-product{
+  text-align:start;
+  margin-left:0rem;
+}

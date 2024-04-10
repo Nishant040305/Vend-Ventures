@@ -15,7 +15,7 @@ function App() {
   return(
   <div className='App'>
       <Routes>
-          <Route path="/dashboard" element = {<Mainpage></Mainpage>}></Route>
+          <Route path="/" element = {<Mainpage></Mainpage>}></Route>
         <Route path="/product/:productID" element = {<Product></Product>}></Route>
         <Route path="/post/mobile" element={<MobilePost></MobilePost>}></Route>
         <Route path="/error" element={<Error></Error>}></Route>

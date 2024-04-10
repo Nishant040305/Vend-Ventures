@@ -26,6 +26,7 @@
 
 .cards-discription{
     color:rgb(95, 95, 95);
+    text-align: left;
 }
 .cards-prize img{
     width:1.4rem;

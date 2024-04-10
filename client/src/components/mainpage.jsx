@@ -1,8 +1,8 @@
 import React from "react";
 import "./mainpage.css";
 import Navbar from "./Navbar.jsx";
-import {useNavigate} from "react-router-dom";
-import { useState } from "react";
+import {useNavigate,useLocation} from "react-router-dom";
+import { useState,useEffect } from "react";
 import Footer from "./Footer.jsx";
 import axios from "axios";
 
@@ -20,26 +20,28 @@ const Card=(props)=>{
             console.error(err);
         }
     }
-    const likeDislike=()=>{
-        console.log(document.getElementById('heart').src)
-        if(document.getElementById('heart').src==="http://localhost:3000/heart-png-38780.png"){
-            document.getElementById('heart').src="heart.png";
+    const likeDislike=(id)=>{
+
+        if(document.getElementById(`${id}`).src==="http://localhost:3000/heart-png-38780.png"){
+            document.getElementById(`${id}`).src="heart.png";
 
         }
         else{
-            document.getElementById('heart').src="heart-png-38780.png";
+            document.getElementById(`${id}`).src="heart-png-38780.png";
         }
 
     }
     return(
-        <div className="mainpage-cards card" onClick={async () => await onCardClick()}>
-            <img className="card-img-top" alt="..."src="vendVentures.png"></img>
+        <div className="mainpage-cards card">
+            <img className="card-img-top" alt="..."src="vendVentures.png" onClick={async () => await onCardClick()}></img>
             <div className="card-body">
-            <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>Brain</div><img class="heart" id="heart" src="heart.png" onClick={(e)=>{likeDislike()}}></img></div>
+            <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>{props.title}</div><img class="heart" id={`${props.id}`}  src="heart.png" onClick={(e)=>{likeDislike(props.id)}}></img></div>
             
             
             <div className="cards-discription card-text">
-                brain is something which our profs 
+                {props.description} 
+                <br></br><br></br><br></br>
+                {props.location}
             </div>
             <div className="cards-prize container">
                 <img src="rupee.png"></img>{props.prize}
@@ -49,20 +51,39 @@ const Card=(props)=>{
     )
 }
 const Mainpage=()=>{
-
+    const [product,setProduct] = useState([]);
+    const [query,setQuery] = useState({})
+    // let {state} = useLocation();
+    // setQuery(state);
+    const getDetails = async()=>{
+        try{
+            const response = await axios.post('http://localhost:5000/productlist/', query, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if(response.data.error){
+                throw new Error(response.data.error);
+            }
+            else{
+                console.log(response.data)
+                setProduct(response.data);
+            }
+        }
+        catch(error){
+            //console.log(error.message);
+        }
+    }
+    
+    useEffect(() => {
+        getDetails()
+    }, [])
     return(
         <div className="mainpage">
             <Navbar></Navbar>
             <div className="mainpage-card-container " id = "test">
-            <Card prize="400" id ="tffg"></Card>
-            <Card prize="400"></Card>
-            <Card prize="400"></Card>
-            <Card prize="400"></Card><Card prize="400"></Card>
-            <Card prize="400"></Card><Card prize="400"></Card>
-            <Card prize="400"></Card><Card prize="400"></Card>
-            <Card prize="400"></Card><Card prize="400"></Card>
-            <Card prize="400"></Card><Card prize="400"></Card>
-            <Card prize="400"></Card>
+            {product.map((info, index) => (<Card prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
             </div>
         <Footer></Footer>
         </div>

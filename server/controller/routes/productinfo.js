@@ -2,13 +2,14 @@ const userdb = require("../../models/userSchema");
 const productdb = require("../../models/productSchema");
 
 module.exports = (app) => {
-    app.get("/userinfo", async (req, res) => {
+    app.post("/userinfo", async (req, res) => {
         try {
-            let prod = await userdb.findOne({ _id: req.query.id });
-            res.status(200).json({ message: "OK", _id: req.query.id, data: prod });
+            console.log(req.body.id)
+            let prod = await userdb.findOne({userId: req.body.id });
+            res.status(200).json({ message: "OK", _id: req.body.id, data: prod });
         } catch (e) {
             console.error(e);
-            res.status(500).json({ error: "Internal Server Error" });
+            res.status(500).json({ error: req.body.id});
         }
     });
 
@@ -36,13 +37,13 @@ module.exports = (app) => {
         }
     });
 
-    app.get("/productlist", async (req, res) => {
+    app.post("/productlist", async (req, res) => {
         // filter by exact query object (returns all if no query)
         // returns Array
         try {
-            let query = req.query || {};
+            let query = req.body || {};
             if (req.query.searchTerm) {
-                const searchTerm = new RegExp(req.query.searchTerm, 'i');
+                const searchTerm = new RegExp(req.body.searchTerm, 'i');
                 query = {title: searchTerm};
             }
             const products = await productdb.find(query);

@@ -76,7 +76,7 @@ app.get("/auth/google/callback",passport.authenticate("google",{
 app.get("/login/sucess",async(req,res)=>{
     if(req.user){
         res.status(200).json({message:"User Login",user:req.user})
-        // console.log(req.user)
+        // //console.log(req.user)
     }
     else{
         res.status(200).json({message:"Not Authorized"})
@@ -88,7 +88,7 @@ app.get("/logout",(req,res,next)=>{
         if(err){
             return next(err)
         }
-        res.redirect("http://localhost:3000/login");
+        res.redirect("http://localhost:3000/");
     })
 })
 app.listen(PORT,()=>{

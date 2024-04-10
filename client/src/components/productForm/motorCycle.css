@@ -1,4 +1,4 @@
-body {
+.motorcycle {
     font-family:  sans-serif;
     background-color: #f9f9f9;
     color: #333;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-.container {
+.motorcycle .container {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
@@ -20,35 +20,32 @@ body {
     margin-left: 20px;
 }
 
-.heading {
+.motorcycle .heading {
     text-align: center;
-    font-weight: 700;
+    
 }
-.header{
+.motorcycle .header{
     margin-bottom: 20px;
 }
 
-.head2 {
+
+.motorcycle .head2 {
     font-size: 24px;
     font-weight: 550;
     color: #2c882c;
     margin-bottom: 10px;
 }
 
-.labels {
+.motorcycle .labels {
     margin-bottom: 20px;
 }
 
-.label {
+.motorcycle .label {
     font-weight: bold;
     color: #2c882c;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="tel"]
-select,
-textarea {
+.motorcycle input[type="text"]{
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -56,11 +53,44 @@ textarea {
     box-sizing: border-box;
     font-size: 16px;
 }
-#phone{
-    margin-left: 10px;
+
+.motorcycle input[type="number"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-button[type="submit"] {
+.motorcycle input[type="tel"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.motorcycle select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.motorcycle textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.motorcycle button[type="submit"] {
     display: block;
     width: 100%;
     padding: 15px;
@@ -74,6 +104,6 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.motorcycle button[type="submit"]:hover {
     background-color: #236b23;
 }
