@@ -1,7 +1,24 @@
 const userdb = require("../../models/userSchema");
 const productdb = require("../../models/productSchema");
-
+const multer = require("multer")
+const express = require("express");
+const path = require("path");
+const storage = multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,'C:/Users/Nishant Mohan/Desktop/OLX_/OLX/client/public/images');
+    },
+    filename:(req,file,cb)=>{
+        cb(null,Date.now()+path.extname(file.originalname))
+    }
+})
+const upload = multer({
+    storage:storage
+})
 module.exports = (app) => {
+
+    app.post("/upload",upload.single('file'), async(req,res)=>{
+        console.log(req.file);
+    })
     app.post("/userinfo", async (req, res) => {
         try {
             let prod = await userdb.findOne({userId: req.body.id });
@@ -20,16 +37,28 @@ module.exports = (app) => {
             console.error(e);
             res.status(500).json({ error: "Internal Server Error" });
         }
+
     });
 
-    app.post("/productcreate", async (req, res) => {
+
+    app.post("/productcreate",upload.array('files'), async (req, res) => {
+
         try {
-            let prod = req.body; // ?
-            console.log(req.user);
+            let prod = JSON.parse(req.body.user);
+            console.log(prod)
+            let images = req.files.map(file => {
+                let path = file.path.replace(/\\/g, '/');
+                let parts = path.split('/');
+                return [''].concat(parts.slice(-2)).join('/');
+            });
+            console.log(images);
+            prod.images = images;
+            console.log(prod);
             if (!prod.userId) prod.userId = req.user ? req.user._id : "test";
             const Prod = new productdb(prod);
             const ProdRet = await Prod.save();
             res.status(200).json({ message: "OK", _id: ProdRet._id, data: ProdRet });
+            
         } catch (e) {
             console.error(e);
             res.status(500).json({ error: "Internal Server Error" });

@@ -33,7 +33,7 @@ const Card=(props)=>{
     }
     return(
         <div className="mainpage-cards card">
-            <img className="card-img-top" alt="..."src="vendVentures.png" onClick={async () => await onCardClick()}></img>
+            <img className="card-img-top" alt="..."src={props.image} onClick={async () => await onCardClick()}></img>
             <div className="card-body">
             <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>{props.title}</div><img class="heart" id={`${props.id}`}  src="heart.png" onClick={(e)=>{likeDislike(props.id)}}></img></div>
             
@@ -67,7 +67,7 @@ const Mainpage=()=>{
                 throw new Error(response.data.error);
             }
             else{
-                console.log(response.data)
+                // console.log(response.data)
                 setProduct(response.data);
             }
         }
@@ -83,7 +83,7 @@ const Mainpage=()=>{
         <div className="mainpage">
             <Navbar></Navbar>
             <div className="mainpage-card-container " id = "test">
-            {product.map((info, index) => (<Card prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
+            {product.map((info, index) => (<Card prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id} image = {info.images[0]}></Card>))}
             </div>
         <Footer></Footer>
         </div>

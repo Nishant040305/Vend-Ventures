@@ -27,7 +27,7 @@ const Product =()=>{
         line.style.background = change;
       }
     const userInfo = async()=>{
-        console.log("USERINFO")
+        // console.log("USERINFO")
         try {
             const response_ = await axios.post('http://localhost:5000/userinfo/', {id: `${dt2.userId}`,
                 headers: {
@@ -38,7 +38,7 @@ const Product =()=>{
                 throw new Error('Failed to fetch data');
             }
             const data_ = response_.data;
-            console.log(data_)
+            // console.log(data_)
             if (data_.error) {
                 throw new Error(data_.error);
             } else {
@@ -59,7 +59,7 @@ const Product =()=>{
                     'Accept': 'application/json',
                 }
             });
-            console.log(response.data.data)
+            // console.log(response.data.data)
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }
@@ -77,11 +77,7 @@ const Product =()=>{
     useEffect(() => {
         fetchProduct()
     }, [])
-    console.log(info.seller);
-    // useEffect(() => {
-    //     console.log(seller);
-    // }, [seller]);
-    
+
 
     return(
         <>
@@ -93,15 +89,11 @@ const Product =()=>{
         <div className="container-productDetails container flex">
           <div className="left n">
             <div className="main_image">
-              <img src="/images/img1.jpg" className="slide"/>
+
+              {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
             </div>
             <div className="option flex">
-            <img src="/images/img1.jpg" onClick={() => img('/images/img1.jpg')}/>
-            <img src="/images/img2.jpg" onClick={() => img('/images/img2.jpg')}/>
-            <img src="/images/img3.jpg" onClick={() => img('/images/img3.jpg')}/>
-            <img src="/images/img4.jpeg" onClick={() => img('/images/img4.jpeg')}/>
-            <img src="/images/img5.jpg" onClick={() => img('/images/img5.jpg')}/>
-
+            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
 
             </div>
             <div className="product-description">

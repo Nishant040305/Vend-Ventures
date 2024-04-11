@@ -1,9 +1,18 @@
 import React,{useState} from "react";
 import "./mobilePost.css";
 import {useNavigate,useParams,useLocation} from "react-router-dom";
-
+import axios from "axios";
 const MobilePost=()=>{
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState({
+        index1:"",
+        index2:"",
+        index3:"",
+        index4:"",
+        index5:"",
+        index6:"",
+        index7:"",
+
+    });
     const {state}=useLocation();
     const navigate = useNavigate()
     const [userdata,setUserd] = useState(state)
@@ -15,7 +24,7 @@ const MobilePost=()=>{
     )
 
     const [ user, setUser] = useState({
-        // userId:"t",
+        userId:userdata.userId,
         location:"",
         category:"Mobile",
         title:"",
@@ -24,36 +33,46 @@ const MobilePost=()=>{
         description:{},
         images:[]
  })
-    const sendRequest=async()=>{
-        //console.log(user);
+ const sendRequest = async () => {
+    try {
         const formData = new FormData();
-        images.forEach((image, index) => {
-            formData.append(`image${index}`, image)});
-        try{
-            const response = await fetch('http://localhost:5000/productcreate/', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Accept':"/",
-                  },
-                  body: JSON.stringify(user)
-                }).then(response => response.json()).then(data=>{
-                  if(data.error){
-                      throw new Error(data.error);
-                  }
-                  else{
-                      navigate('/');
-                  }
-                }).catch (error=>{
-                      //console.log(error.message)
-                    
-                }) 
-                
-            }
-            catch(err){
-              //console.log("Some error occured");
-            }
+
+Object.entries(images).forEach(([key, image]) => {
+    formData.append('files',image);
+
+    // Use the key as the field name
+});
+console.log(formData);
+console.log(user);
+const userJson = JSON.stringify(user);
+formData.append('user', userJson);
+
+// Rest of your code
+
+
+        const response = await axios({
+            method: 'POST',
+            url: 'http://localhost:5000/productcreate/',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            data: formData
+        });
+
+        if(response.data.error){
+            throw new Error(response.data.error);
+        }
+        else{
+            navigate('/');
+        }
     }
+    catch(err){
+        //console.log(err.message);
+    }
+
+}
+
+
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
@@ -63,7 +82,11 @@ const MobilePost=()=>{
         //console.log(user);
     }
     const handleImageChange = e => {
-        setImages([...e.target.files]); // Convert the FileList to an array
+        let name = `index${e.target.name}`;
+        setImages({
+            ...images,
+            [name]: e.target.files[0]
+        });
         setUser(images);
     }
     const handleChangeD = e => {
@@ -111,7 +134,14 @@ const MobilePost=()=>{
                     <input className="data-mobile-input" name="price" value={user.price} onChange={handleChange}></input>
                 </section>
                 <section className="mobilePost-section">
-                    <input type="file" multiple onChange={handleImageChange} />
+                    <input type="file" name="1" onChange={(e)=>handleImageChange(e)} required />
+                    <input type="file" name="2" onChange={(e)=>handleImageChange(e)}/>
+                    <input type="file" name="3" onChange={(e)=>handleImageChange(e)}/>
+                    <input type="file" name="4" onChange={(e)=>handleImageChange(e)}/>
+                    <input type="file" name="5" onChange={(e)=>handleImageChange(e)}/>
+                    <input type="file" name="6" onChange={(e)=>handleImageChange(e)}/>
+                    <input type="file" name="7" onChange={(e)=>handleImageChange(e)}/>
+
                 </section>
 
                 <section className="mobilePost-section">
@@ -129,6 +159,8 @@ const MobilePost=()=>{
                 </section>
                 <section className="mobilePost-section post">
                     <button className=" btn mobilePost-button" onClick={(e)=>{sendRequest()}}>Post now</button>
+                    {/* <button className=" btn mobilePost-button" onClick={(e)=>{sendImage()}}>image now</button> */}
+
                 </section>
             </div>
         </div>

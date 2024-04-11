@@ -1,8 +1,10 @@
 import React ,{useState} from "react";
 import './realState.css';
 import {useNavigate,useParams,useLocation} from "react-router-dom";
-
+import axios from "axios";
 const RealState=()=>{
+    const [images, setImages] = useState();
+
     const {state}=useLocation();
     const navigate = useNavigate()
 
@@ -27,33 +29,39 @@ const RealState=()=>{
         phoneNumber:"",
         description:{}
  })
-    const sendRequest=async()=>{
-        try{
-            const response = await fetch('http://localhost:5000/productcreate/', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Accept':"/",
-                  },
-                  body: JSON.stringify(user)
-                }).then(response => response.json()).then(data=>{
-                  if(data.error){
-                      throw new Error(data.error);
-                  }
-                  else{
-                      //console.log(data);
-                      let id = data.id;
-                      navigate('/');
-                  }
-                }).catch (error=>{
-                      //console.log(error.message)
-                    
-                }) 
-                
-            }
-            catch(err){
-              //console.log("Some error occured");
-            }
+ const sendRequest=async()=>{
+    //console.log(user);
+    try {
+        const formData = new FormData();
+        formData.append('file',images);
+        const userJson = JSON.stringify(user);
+        formData.append('user', userJson);
+    
+        const response = await axios({
+            method: 'POST',
+            url: 'http://localhost:5000/productcreate/',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            data: formData
+        });
+    
+        if(response.data.error){
+            throw new Error(response.data.error);
+        }
+        else{
+            navigate('/');
+        }
+    }
+    catch(err){
+        //console.log(err.message);
+    }
+    
+}
+
+    const handleImageChange = e => {
+        setImages([...e.target.files]); // Convert the FileList to an array
+        setUser(images);
     }
     const handleChange = e => {
         const { name, value } = e.target
@@ -145,7 +153,7 @@ const RealState=()=>{
             </div>
             <div class="labels">
                 <h2 class="head2">UPLOAD PHOTOS</h2>
-                <input type="file" name="photo1" accept="image/*" required></input>
+                <input type="file" onChange={e=>setImages(e.target.files[0])}  required></input>
             </div>
             <div class="labels">
                 <h2 class="head2">CONFIRM YOUR LOCATION</h2>
