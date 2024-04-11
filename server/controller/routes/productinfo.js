@@ -4,7 +4,6 @@ const productdb = require("../../models/productSchema");
 module.exports = (app) => {
     app.post("/userinfo", async (req, res) => {
         try {
-            console.log(req.body.id)
             let prod = await userdb.findOne({userId: req.body.id });
             res.status(200).json({ message: "OK", _id: req.body.id, data: prod });
         } catch (e) {
