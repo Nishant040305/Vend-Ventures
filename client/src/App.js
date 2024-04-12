@@ -59,12 +59,12 @@ function App() {
       <MyForm /> */}
 
       <Routes>
-          <Route path="/:_" element = {<Mainpage></Mainpage>}></Route>
+          {/* <Route path="/:_" element = {<Mainpage></Mainpage>}></Route> */}
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/chat/:chatId" element={<Chats></Chats>}></Route>
 
         <Route path="/" element = {<Mainpage></Mainpage>}></Route>
-
+<Route path="/product/:productID" element={<Product></Product>}></Route>
         <Route path="/post/mobile" element={<MobilePost></MobilePost>}></Route>
         <Route path="/error" element={<Error></Error>}></Route>
         <Route path="/post/car" element={<CarPost></CarPost>}></Route>

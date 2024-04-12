@@ -28,7 +28,7 @@ const Product =()=>{
       }
    
     const userInfo = async()=>{
-        console.log("USERINFO")
+        // console.log("USERINFO")
         try {
             const response_ = await axios.post('http://localhost:5000/userinfo/', {id: `${dt2.userId}`,
                 headers: {
@@ -84,66 +84,62 @@ const Product =()=>{
         <>
         <Navbar></Navbar>
         <div className="product">
-                
-
-      <section >
-        <div className="container-productDetails container flex">
-          <div className="left n">
-            <div className="main_image">
-
-              {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
-            </div>
-            <div className="option flex">
-            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
-
-            </div>
-            <div className="product-description">
-                <h3>description</h3>
-                {info.dt&&<div>
-                {Object.keys(info.dt.description).map((key, index) => (
-                <div  className="description-data" key={index}>
-                    <strong>{key}:</strong> {info.dt.description[key]}
-                </div>
-            ))}
-           
-                </div>}
-
-            </div>
-          </div>
-          <div className="right">
-            <div className="Dcrrchxaoi">
-            <h3 className="product-title">{info.dt&&info.dt.title}</h3>
-            <div>
-            <i className="fa-solid fa-share-nodes"></i>
-            <i className="fa-regular fa-heart"></i>
-            </div>
+            <section >
+                <div className="container-productDetails container flex">
+                    <div className="left n">
+                        <div className="main_image">
+                            {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
+                        </div>
+                        <div className="option flex">
+                            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
+                        </div>
+                        <div className="product-description">
+                            <h3>description</h3>
+                            {info.dt&&<div>{Object.keys(info.dt.description).map((key, index) => (
+                                            <div  className="description-data" key={index}>
+                                                <strong>{key}:</strong> {info.dt.description[key]}
+                                            </div>
+                                            ))}
             
-            </div>
-            
-            <h4 className="align-left "> <small className="color-change-product">Rs.</small>{info.dt&&info.dt.price}</h4>
-            <p className="align-left color-change-product" >{info.dt&&info.dt.description.description}</p>
-            <p className="align-left color-change-product ">{info.dt&&info.dt.location}</p>
-            <hr/>
-            <div className="profile">
-                <div className="seller">
-                    <img id="sellerImg" className="profile circular" src={info.seller&&info.seller.image} alt="" height="60px"/>
+                                        </div>}
+
+                        </div>
+                    </div>
+                    <div className="right">
+                        <div className="Dcrrchxaoi">
+                            <h3 className="product-title">{info.dt&&info.dt.title}</h3>
+                            <div style={{display:"flex", flexDirection:"row"}}>
+                                <i className="fa-solid fa-share-nodes"></i>
+                                <i className="fa-regular fa-heart"></i>
+                            </div>
+                    
+                        </div>
+                    
+                        <h4 className="align-left "> <small className="color-change-product">Rs.</small>{info.dt&&info.dt.price}</h4>
+                        <p className="align-left color-change-product" >{info.dt&&info.dt.description.description}</p>
+                        <p className="align-left color-change-product ">{info.dt&&info.dt.location}</p>
+                        <hr/>
+                        <div>
+                            <div className="profile">
+                                <div className="seller">
+                                    <img id="sellerImg" className="profile circular" src={info.seller&&info.seller.image} alt="" height="60px"/>
+                                </div>
+                                <div className="seller">
+                                    <h5 id="sellerName">{info.seller&&info.seller.displayName}</h5>
+                                </div>
+                            
+                            </div>
+                            <div className="chatSectsnafiXsf">
+                                <button className="product-chat-bag">Chat with seller</button>
+                                <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
+                                <br/>
+                                <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
+                                    <button className="product-chat-bag" onClick={()=>{}}>Add to Bag</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="seller">
-                    <h5 id="sellerName">{info.seller&&info.seller.displayName}</h5>
-                </div>
-                
-            </div>
-            <div className="chatSectsnafiXsf">
-            <button className="product-chat-bag">Chat with seller</button>
-            <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
-            <br/>
-            <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
-            <button className="product-chat-bag" onClick={()=>{}}>Add to Bag</button>
-            </div>
-            
-          </div>
-        </div>
-      </section>
+        </section>
         
     </div>
     <Footer>
