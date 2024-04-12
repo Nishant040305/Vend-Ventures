@@ -1,0 +1,121 @@
+.services {
+    font-family:  sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.services .wood {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+.applied a{
+    color: #333;
+    margin-left: 20px;
+}
+
+.services .first {
+    text-align: center;
+    
+}
+.services .first-head{
+    margin-bottom: 20px;
+}
+
+
+.services .first2 {
+    font-size: 24px;
+    font-weight: 550;
+    color: #2c882c;
+    margin-bottom: 10px;
+}
+
+.services .paid-service {
+    margin-bottom: 20px;
+}
+
+.services .label {
+    font-weight: bold;
+    color: #2c882c;
+}
+
+.services input[type="text"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.services input[type="number"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.services input[type="tel"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.services select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.services textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.services button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2c882c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.services button[type="submit"]:hover {
+    background-color: #236b23;
+}
+.service-upload-d {
+    margin:1rem;
+    width:5rem;
+  }
+.service-upload-d input[type=file] {
+    display: none;
+  }
+.photo-upload{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
