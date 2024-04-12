@@ -6,8 +6,13 @@
     background-color:black;
 }
 .icon{
-    padding-top:0.7rem;
-    margin-left:5rem;
+    /* padding-top:0.7rem; */
+    /* margin-left:5rem; */
+    margin-left:1rem;
+}
+.cart{
+        margin-left:5rem;
+
 }
 .vertical-line{
     margin-top:0.7rem;

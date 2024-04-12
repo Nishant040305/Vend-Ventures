@@ -118,3 +118,15 @@
     border:0;
 
 }
+.file-upload-d {
+    margin:1rem;
+    width:5rem;
+  }
+.file-upload-d input[type=file] {
+    display: none;
+  }
+.file-uploading{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

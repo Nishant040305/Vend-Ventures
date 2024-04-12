@@ -3,14 +3,23 @@ import './realState.css';
 import {useNavigate,useParams,useLocation} from "react-router-dom";
 import axios from "axios";
 const RealState=()=>{
-    const [images, setImages] = useState();
+    const [images, setImages] = useState({
+        index1:"",
+        index2:"",
+        index3:"",
+        index4:"",
+        index5:"",
+        index6:"",
+        index7:"",
+        index8:""
 
+    });
     const {state}=useLocation();
     const navigate = useNavigate()
 
     const [des,setDes] = useState(
         {
-            description:"",
+            Description:"",
             type:"",
             Listed:"",
             plt:"",
@@ -27,7 +36,7 @@ const RealState=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        description:{}
+        Description:{}
  })
  const sendRequest=async()=>{
     //console.log(user);
@@ -58,19 +67,17 @@ const RealState=()=>{
     }
     
 }
-
-    const handleImageChange = e => {
-        setImages([...e.target.files]); // Convert the FileList to an array
-        setUser(images);
-    }
-    const handleChange = e => {
-        const { name, value } = e.target
-        setUser({
-            ...user,
-            [name]: value
-        })
-        //console.log(user);
-    }
+const handleImageChange = e => {
+    let name = `index${e.target.name}`;
+    setImages({
+        ...images,
+        [name]: e.target.files[0]
+    });
+    setUser({
+        ...user,
+        ["images"]:images
+    });
+}
     const handleChangeD = e => {
         const { name, value } = e.target
         setDes({
@@ -79,7 +86,15 @@ const RealState=()=>{
         })
         setUser({
             ...user,
-            ["description"]:des
+            ["Description"]:des
+        })
+        //console.log(user);
+    }
+    const handleChange = e => {
+        const { name, value } = e.target
+        setUser({
+            ...user,
+            [name]: value
         })
         //console.log(user);
     }
@@ -96,8 +111,8 @@ const RealState=()=>{
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="brand"  required>Type*</label>
-                <select name="type" id="brand" value={des.type} onChange={handleChangeD}>
+                <label for="Brand"  required>Type*</label>
+                <select name="type" id="Brand" value={des.type} onChange={handleChangeD}>
                     <option value=""></option>
                     
                         <option value="For Rent">For Rent</option>
@@ -143,8 +158,8 @@ const RealState=()=>{
                 <input type="text" name="title" id="title"  value={user.title} onChange={handleChange}placeholder="Mention the key features of your item" required>
             </input></div>
             <div class="labels">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" value={des.description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
+                <label for="Description">Description</label>
+                <textarea name="Description" id="Description" value={des.Description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
             </div>
             <div class="labels">
                 <h2 class="head2">SET A PRICE</h2>
@@ -153,8 +168,17 @@ const RealState=()=>{
             </div>
             <div class="labels">
                 <h2 class="head2">UPLOAD PHOTOS</h2>
-                <input type="file" onChange={e=>setImages(e.target.files[0])}  required></input>
-            </div>
+                <div className="file-uploading">
+                        
+                        <label className="file-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"></img><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} required /></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                        <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                </div>            </div>
             <div class="labels">
                 <h2 class="head2">CONFIRM YOUR LOCATION</h2>
                 <label for="location">Location*</label>

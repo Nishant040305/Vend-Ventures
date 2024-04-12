@@ -11,15 +11,16 @@ const MobilePost=()=>{
         index5:"",
         index6:"",
         index7:"",
+        index8:""
 
     });
     const {state}=useLocation();
     const navigate = useNavigate()
-    const [userdata,setUserd] = useState(state)
+    const [userdata,setUserd] = useState()
     const [des,setDes] = useState(
         {
-            brand:"",
-            description:"",
+            Brand:"",
+            Description:"",
         }
     )
 
@@ -30,7 +31,7 @@ const MobilePost=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        description:{},
+        Description:{},
         images:[]
  })
  const sendRequest = async () => {
@@ -46,8 +47,6 @@ console.log(formData);
 console.log(user);
 const userJson = JSON.stringify(user);
 formData.append('user', userJson);
-
-// Rest of your code
 
 
         const response = await axios({
@@ -87,7 +86,10 @@ formData.append('user', userJson);
             ...images,
             [name]: e.target.files[0]
         });
-        setUser(images);
+        setUser({
+            ...user,
+            ["images"]:images
+        });
     }
     const handleChangeD = e => {
         const { name, value } = e.target
@@ -97,7 +99,7 @@ formData.append('user', userJson);
         })
         setUser({
             ...user,
-            ["description"]:des
+            ["Description"]:des
         })
         //console.log(user);
     }
@@ -114,17 +116,17 @@ formData.append('user', userJson);
                     <div className="mobilePost-title">INCLUDE SOME DETAILS</div>
                     <div className="mobile-data">
                         <div className="mobileheading">Brand *</div>
-                        <input type="text" className="data-mobile-input" name="brand" value={des.brand} onChange={handleChangeD}/>
+                        <input type="text" className="data-mobile-input" name="Brand" value={des.Brand} onChange={handleChangeD}/>
                     </div>
                     <div className="mobile-data">
                         <div className="mobileheading">Ad title*</div>
                         <input type="text" className="data-mobile-input" name="title" value={user.title} onChange={handleChange}/>
-                        <div className="info-input">Mention the feacture of your item(e.g. brand,model,age,type)</div>
+                        <div className="info-input">Mention the feacture of your item(e.g. Brand,model,age,type)</div>
 
                     </div>
                     <div className="mobile-data">
                     <div className="mobileheading">Description*</div>
-                    <input type="text" className="data-mobile-input Xcyux" name="description" value={des.description} onChange={handleChangeD}/>
+                    <input type="text" className="data-mobile-input Xcyux" name="Description" value={des.Description} onChange={handleChangeD}/>
                     <div className="info-input">Include condition,features and reason for selling</div>
                     </div>
                 </section>
@@ -133,14 +135,20 @@ formData.append('user', userJson);
                     <div className="mobileheading">Price*</div>
                     <input className="data-mobile-input" name="price" value={user.price} onChange={handleChange}></input>
                 </section>
-                <section className="mobilePost-section">
-                    <input type="file" name="1" onChange={(e)=>handleImageChange(e)} required />
-                    <input type="file" name="2" onChange={(e)=>handleImageChange(e)}/>
-                    <input type="file" name="3" onChange={(e)=>handleImageChange(e)}/>
-                    <input type="file" name="4" onChange={(e)=>handleImageChange(e)}/>
-                    <input type="file" name="5" onChange={(e)=>handleImageChange(e)}/>
-                    <input type="file" name="6" onChange={(e)=>handleImageChange(e)}/>
-                    <input type="file" name="7" onChange={(e)=>handleImageChange(e)}/>
+
+                <section className="mobilePost-section ">
+                <div className="mobilePost-title">UPLOAD IMAGES*</div>
+                    <div className="file-uploading">
+                        
+                    <label className="file-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"></img><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} required /></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    </div>
 
                 </section>
 

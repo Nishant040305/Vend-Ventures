@@ -69,8 +69,10 @@ module.exports = (app) => {
         // filter by exact query object (returns all if no query)
         // returns Array
         try {
+            console.log(req.body);
             let query = req.body || {};
-            if (req.query.searchTerm) {
+            console.log(req.query);
+            if (query.searchTerm) {
                 const searchTerm = new RegExp(req.body.searchTerm, 'i');
                 query = {title: searchTerm};
             }

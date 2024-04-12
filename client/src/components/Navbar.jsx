@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,useParams} from "react-router-dom";
 import "./Navbar.css";
 import axios from "axios";
 import './loginpage.css';
@@ -28,8 +28,35 @@ const Navbar =()=>{
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
+    const [query,setQurey] = useState();
     const showAdd = ()=>{
         navigate('/post',{ state: userdata });
+    }
+    const searchTerm = ()=>{
+        // let params = window.location.href.split('/')[-1];
+        // if (params[0] != '?') params = `?s=${JSON.stringify(query)}`;
+        // else {
+        //     let args = {};
+        //     params.slice(1).split('&').forEach(i=>{
+        //         let j = i.split('=');
+        //         args[j[0]] = j[1];
+        //     });
+        //     args["s"] = JSON.stringify(query);
+        //     params = "?";
+        //     Object.keys(args).forEach(i => {
+        //         params += (i + "=" + args[i]);
+        //     })
+        // };
+        // navigate(`/${params}`);
+        navigate(`/${JSON.stringify(query)}`)
+    }
+    
+    
+    const handleSearch =(e)=>{
+        setQurey(e.target.value);
+    }
+    const showCart =()=>{
+        navigate(`/cart`,{state:userdata})
     }
     const getUser = async()=>{
         try {
@@ -96,15 +123,16 @@ const Navbar =()=>{
                                 </div>
                             </div>
                         </div>
-                    <input className="form-control mr-sm-2 search root" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success submit-button" type="submit">Search</button>
+                    <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" placeholder="Search" aria-label="Search"/>
+                    <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{searchTerm()}}>Search</button>
                     <button className="btn  category" type="button" onClick={(e)=>{visible(e)}}>Category</button>
-                    <div className="icon root"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
+                    {userdata?<div className="icon cart root"><img width="35" height="35" src="cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
+                    {userdata?<div className="icon root"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
                         <path fill="none" d="M25.532 23.71c-1.71-1.71-2.53-3.47-2.53-8.71 0-5.31-3.432-9-8.003-9s-8.004 3.69-8.004 9c0 5.24-.82 7-2.53 8.71-.11.1-.19.2-.25.29H25.78c-.058-.09-.138-.19-.248-.29z"/>
                         <path fill="#494c4e" d="M9.34 20.974c.263.087.546-.054.634-.316.3-.903.36-1.605.36-3.195 0-3.065.418-4.508 2.52-6.61.195-.194.195-.51 0-.706-.195-.195-.512-.195-.707 0-2.323 2.323-2.814 4.01-2.814 7.317 0 1.484-.052 2.11-.308 2.88-.088.26.054.543.316.63z"/>
                         <path fill="#494c4e" d="M26.942 22.29c-1.29-1.29-1.94-2.53-1.94-7.29 0-4.32-1.96-7.83-5-9.64V4C20 1.8 18.2 0 16 0h-2c-2.2 0-4 1.8-4 4v1.36C6.957 7.17 4.997 10.68 4.997 15c0 4.76-.65 6-1.94 7.29-1.51 1.51-1.51 3.71.7 3.71h6.34c.46 2.28 2.482 4 4.902 4s4.44-1.72 4.9-4h6.34c2.21 0 2.21-2.2.7-3.71zM12 4c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v.46c-.94-.3-1.95-.46-3-.46s-2.06.16-3 .46V4zm3 24c-1.3 0-2.41-.84-2.82-2h5.64c-.41 1.16-1.52 2-2.82 2zM4.218 24c.06-.09.14-.19.25-.29 1.71-1.71 2.53-3.47 2.53-8.71 0-5.31 3.43-9 8.002-9s8.002 3.69 8.002 9c0 5.24.82 7 2.53 8.71.11.1.19.2.25.29H4.22z"/>
                         </svg>
-                    </div>
+                    </div>:<div></div>}
                 <hr className="vertical-line"/>
                 {userdata?<div style={{display:"flex",flexDirection:"row"}}><img className="rounded-circle img-profile-icon" src={userdata.image} ></img><button type="button" className="btn sell-button login-button-navbar"  onClick={logout}>Logout</button></div>:<button type="button" className="btn sell-button login-button-navbar" onClick={visibleLogin} id="loginBtn">login</button>}
                 

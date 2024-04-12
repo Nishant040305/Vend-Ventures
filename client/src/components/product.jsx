@@ -96,12 +96,12 @@ const Product =()=>{
             {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
 
             </div>
-            <div className="product-description">
+            <div className="product-Description">
                 <h3>Description</h3>
                 {info.dt&&<div>
-                {Object.keys(info.dt.description).map((key, index) => (
-                <div  className="description-data" key={index}>
-                    <strong>{key}:</strong> {info.dt.description[key]}
+                {Object.keys(info.dt.Description).map((key, index) => (
+                <div  className="Description-data" key={index}>
+                    <strong>{key}:</strong> {info.dt.Description[key]}
                 </div>
             ))}
            
@@ -120,7 +120,7 @@ const Product =()=>{
             </div>
             
             <h4 className="align-left "> <small className="color-change-product">Rs.</small>{info.dt&&info.dt.price}</h4>
-            <p className="align-left color-change-product" >{info.dt&&info.dt.description.description}</p>
+            <p className="align-left color-change-product" >{info.dt&&info.dt.Description.Description}</p>
             <p className="align-left color-change-product ">{info.dt&&info.dt.location}</p>
             <hr/>
             <div className="profile">
@@ -134,7 +134,7 @@ const Product =()=>{
             </div>
             <div className="chatSectsnafiXsf">
             <button className="product-chat-bag">Chat with seller</button>
-            <h5  className="align-left ">Posted in</h5>
+            <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
             <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
             <button className="product-chat-bag">Add to Bag</button>

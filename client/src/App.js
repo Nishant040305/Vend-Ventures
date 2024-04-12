@@ -10,12 +10,15 @@ import CarPost from './components/productForm/carPost';
 import RealState from './components/productForm/realState';
 import Electronics from './components/productForm/electorics';
 import MotorCycle from './components/productForm/motorCycle';
-
+import Cart from './components/cart';
+import Chats from './components/Chats'
 function App() {
   return(
   <div className='App'>
       <Routes>
-          <Route path="/" element = {<Mainpage></Mainpage>}></Route>
+          <Route path="/:searchTerm" element = {<Mainpage></Mainpage>}></Route>
+          <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/Chats" element={<Chats></Chats>}></Route>
         <Route path="/product/:productID" element = {<Product></Product>}></Route>
         <Route path="/post/mobile" element={<MobilePost></MobilePost>}></Route>
         <Route path="/error" element={<Error></Error>}></Route>
