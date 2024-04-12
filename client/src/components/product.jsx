@@ -48,7 +48,7 @@ const Product =()=>{
                         throw new Error(response.data.error);
                     } else {
                         console.log("NEW CHAT", response.data);
-                        openChat(response.data._id)
+                        openChat(response.data._id, response.data.channel)
                     }
                 } catch (error) {
                     console.log(error.message);
@@ -56,15 +56,19 @@ const Product =()=>{
             }
             else{
                 console.log("LOAD CHAT", response.data)
-                openChat(response.data.channel._id)
+                openChat(response.data.channel._id, response.data.channel)
             }
         }
         catch(error){
             console.log(error.message);
         }
     }
-    function openChat(cid) {
-        navigate(`/chat/${cid}`)
+    function openChat(cid, ch) {
+        navigate(`/chat/${cid}`, {state: {
+            owner: info.seller,
+            user: state,
+            channel: ch
+        }})
     }
 
     function img(anything) {

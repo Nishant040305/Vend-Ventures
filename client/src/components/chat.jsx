@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './chat.css';
+import axios from 'axios';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import {useParams} from "react-router-dom";
+import {useParams,useLocation} from "react-router-dom";
 const Message =(props)=>{
     return(
         <div className="message" style={{float:props.sender}}>
@@ -14,9 +15,12 @@ const Message =(props)=>{
         </div>
     )
 }
-const Chats =()=>{
+const Chats = ()=>{
     const {chatId} = useParams();
-    
+    const {state} = useLocation();
+    const {user, owner, channel} = state;
+    console.log(state);
+
     return(
         <div className="chats">
             <Navbar/>
