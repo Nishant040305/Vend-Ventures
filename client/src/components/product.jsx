@@ -27,7 +27,7 @@ const Product =()=>{
         line.style.background = change;
       }
     const userInfo = async()=>{
-        // console.log("USERINFO")
+        console.log("USERINFO")
         try {
             const response_ = await axios.post('http://localhost:5000/userinfo/', {id: `${dt2.userId}`,
                 headers: {
@@ -98,8 +98,9 @@ const Product =()=>{
             </div>
             <div className="product-Description">
                 <h3>Description</h3>
+                {console.log(info.dt)}
                 {info.dt&&<div>
-                {Object.keys(info.dt.Description).map((key, index) => (
+                {Object.keys(info.dt.description).map((key, index) => (
                 <div  className="Description-data" key={index}>
                     <strong>{key}:</strong> {info.dt.Description[key]}
                 </div>

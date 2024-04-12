@@ -2,6 +2,7 @@ import React from "react";
 import './Chats.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import axios from "axios";
 const Message =(props)=>{
     return(
         <div className="message" style={{float:props.sender}}>
@@ -14,6 +15,7 @@ const Message =(props)=>{
     )
 }
 const Chats =()=>{
+    const response = axios.post()
     return(
         <div className="chats">
             <Navbar/>
@@ -21,28 +23,7 @@ const Chats =()=>{
                 <div className="main-info">
                     <img src="/images/img1.jpg" className="rounded-circle main-info-chat"></img> 
                     <div class="users-info">
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;Nishant Mohan</div>
+
 
                     </div>
                     </div>

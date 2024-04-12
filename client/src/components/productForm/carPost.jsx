@@ -20,7 +20,7 @@ const CarPost=()=>{
 
     const [des,setDes] = useState(
         {
-            Brand:"",
+            brand:"",
             Description:"",
             year:"",
             fuel:"",
@@ -119,10 +119,10 @@ formData.append('user', userJson);
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="Brand"  required>Brand*</label>
-                <select name="Brand" id="Brand">
-                    <option value={des.Brand} onChange={handleChangeD}></option>
-                    <optgroup label="Popular Brand">
+                <label for="brand"  required>brand*</label>
+                <select name="brand" id="brand">
+                    <option value={des.brand} onChange={handleChangeD}></option>
+                    <optgroup label="Popular brand">
                         <option value="Maruti Suzuki">Maruti Suzuki</option>
                         <option value="Hyundai">Hyundai</option>
                         <option value="Tata">Tata</option>
@@ -130,7 +130,7 @@ formData.append('user', userJson);
                         <option value="Toyota">Toyota</option>
                         <option value="Honda">Honda</option>
                     </optgroup>
-                    <optgroup label="All Brand">
+                    <optgroup label="All brand">
                         <option value="BYD">BYD</option>
                         <option value="Audi">Audi</option>
                         <option value="Ambassador">Ambassador</option>

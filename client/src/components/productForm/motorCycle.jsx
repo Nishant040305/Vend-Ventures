@@ -19,7 +19,7 @@ const MotorCycle=()=>{
 
     const [des,setDes] = useState(
         {
-            Brand:"",
+            brand:"",
             Description:"",
             km:"",
             year:"",
@@ -108,8 +108,8 @@ const MotorCycle=()=>{
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="Brand"  required>Brand*</label>
-                <select name="Brand" value={des.Brand} onChange={handleChangeD} id="Brand">
+                <label for="brand"  required>brand*</label>
+                <select name="brand" value={des.brand} onChange={handleChangeD} id="brand">
                     <option value=""></option>
                     
                         <option value="Harley-Davidson">Harley-Davidson</option>
@@ -135,7 +135,7 @@ const MotorCycle=()=>{
                 </select>
             </div>
             <div class="labels">
-                <label for="year" value={des.Brand} onChange={handleChangeD}  >Year*</label>
+                <label for="year" value={des.brand} onChange={handleChangeD}  >Year*</label>
                 <input type="number" name="year" id="year" required></input>
             </div>
            

@@ -19,7 +19,7 @@ const MobilePost=()=>{
     const [userdata,setUserd] = useState()
     const [des,setDes] = useState(
         {
-            Brand:"",
+            brand:"",
             Description:"",
         }
     )
@@ -115,13 +115,13 @@ formData.append('user', userJson);
                 <section className="mobilePost-section">
                     <div className="mobilePost-title">INCLUDE SOME DETAILS</div>
                     <div className="mobile-data">
-                        <div className="mobileheading">Brand *</div>
-                        <input type="text" className="data-mobile-input" name="Brand" value={des.Brand} onChange={handleChangeD}/>
+                        <div className="mobileheading">brand *</div>
+                        <input type="text" className="data-mobile-input" name="brand" value={des.brand} onChange={handleChangeD}/>
                     </div>
                     <div className="mobile-data">
                         <div className="mobileheading">Ad title*</div>
                         <input type="text" className="data-mobile-input" name="title" value={user.title} onChange={handleChange}/>
-                        <div className="info-input">Mention the feacture of your item(e.g. Brand,model,age,type)</div>
+                        <div className="info-input">Mention the feacture of your item(e.g. brand,model,age,type)</div>
 
                     </div>
                     <div className="mobile-data">

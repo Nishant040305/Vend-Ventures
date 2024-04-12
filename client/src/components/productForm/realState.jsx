@@ -111,8 +111,8 @@ const handleImageChange = e => {
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="Brand"  required>Type*</label>
-                <select name="type" id="Brand" value={des.type} onChange={handleChangeD}>
+                <label for="brand"  required>Type*</label>
+                <select name="type" id="brand" value={des.type} onChange={handleChangeD}>
                     <option value=""></option>
                     
                         <option value="For Rent">For Rent</option>

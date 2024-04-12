@@ -30,6 +30,7 @@ module.exports = (app) => {
     });
 
     app.post("/productinfo", async (req, res) => {
+        console.log(res.body);
         try {
             let prod = await productdb.findOne({ _id: req.body.id });
             res.status(200).json({ message: "OK", _id: req.body.id, data: prod });
