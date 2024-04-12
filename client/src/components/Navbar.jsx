@@ -40,12 +40,27 @@ const Navbar =()=>{
     // URLSearchParams
     const search = () => {
         let params = new URLSearchParams(window.location.search);
-        if (params.has("s")) {
-            params.set("s", query);
-        } else {
-            params.append("s", query);
-        }
-        navigate(query ? `/?${params.toString()}` : "/");
+        if (query) {
+            if (params.has("s")) {
+                params.set("s", query);
+            } else {
+                params.append("s", query);
+            }
+        } else params.delete("s");
+        navigate(`/?${params.toString()}`);
+        window.location.reload();
+    }
+
+    const filterCategory = (categ) => {
+        let params = new URLSearchParams(window.location.search);
+        if (categ) {
+            if (params.has("c")) {
+                params.set("c", categ);
+            } else {
+                params.append("c", categ);
+            }
+        } else params.delete("c");
+        navigate(`/?${params.toString()}`);
         window.location.reload();
     }
 
@@ -137,12 +152,12 @@ const Navbar =()=>{
             </form>
             <div className="header-bottom-bar">
                 <ul className="navbar-menu-cat">
-                <li className="text-bold">All Categories<i className="fa-solid fa-angle-down"></i></li>
-                <li>Mobile</li>
-                <li>Cars</li>
-                <li>Bikes</li>
-                <li>Properties</li>
-                <li>Electronic Appliances</li>
+                <li onClick={()=>{filterCategory(null)}} className="text-bold">All Categories<i className="fa-solid fa-angle-down"></i></li>
+                <li onClick={()=>{filterCategory("Mobile")}}>Mobile</li>
+                <li onClick={()=>{filterCategory("Automobiles-car")}}>Cars</li>
+                <li onClick={()=>{filterCategory("Automobiles-mototcycles")}}>Bikes</li>
+                <li onClick={()=>{filterCategory("realState")}}>Properties</li>
+                <li onClick={()=>{filterCategory("Electronics")}}>Electronic Appliances</li>
 
             </ul>
             </div>
