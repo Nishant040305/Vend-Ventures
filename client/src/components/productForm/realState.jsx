@@ -19,7 +19,7 @@ const RealState=()=>{
 
     const [des,setDes] = useState(
         {
-            Description:"",
+            description:"",
             type:"",
             Listed:"",
             plt:"",
@@ -36,7 +36,7 @@ const RealState=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        Description:{}
+        description:{}
  })
  const sendRequest=async()=>{
     //console.log(user);
@@ -86,7 +86,7 @@ const handleImageChange = e => {
         })
         setUser({
             ...user,
-            ["Description"]:des
+            ["description"]:des
         })
         //console.log(user);
     }
@@ -158,8 +158,8 @@ const handleImageChange = e => {
                 <input type="text" name="title" id="title"  value={user.title} onChange={handleChange}placeholder="Mention the key features of your item" required>
             </input></div>
             <div class="labels">
-                <label for="Description">Description</label>
-                <textarea name="Description" id="Description" value={des.Description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
+                <label for="description">description</label>
+                <textarea name="description" id="description" value={des.description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
             </div>
             <div class="labels">
                 <h2 class="head2">SET A PRICE</h2>

@@ -20,7 +20,7 @@ const MobilePost=()=>{
     const [des,setDes] = useState(
         {
             brand:"",
-            Description:"",
+            description:"",
         }
     )
 
@@ -31,7 +31,7 @@ const MobilePost=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        Description:{},
+        description:{},
         images:[]
  })
  const sendRequest = async () => {
@@ -99,7 +99,7 @@ formData.append('user', userJson);
         })
         setUser({
             ...user,
-            ["Description"]:des
+            ["description"]:des
         })
         //console.log(user);
     }
@@ -125,8 +125,8 @@ formData.append('user', userJson);
 
                     </div>
                     <div className="mobile-data">
-                    <div className="mobileheading">Description*</div>
-                    <input type="text" className="data-mobile-input Xcyux" name="Description" value={des.Description} onChange={handleChangeD}/>
+                    <div className="mobileheading">description*</div>
+                    <input type="text" className="data-mobile-input Xcyux" name="description" value={des.description} onChange={handleChangeD}/>
                     <div className="info-input">Include condition,features and reason for selling</div>
                     </div>
                 </section>
