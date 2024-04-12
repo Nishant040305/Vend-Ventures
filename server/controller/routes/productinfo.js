@@ -23,7 +23,7 @@ module.exports = (app) => {
 
     app.post("/usercreate", async (req, res) => {
         try {
-            let user = await userdb.findOne({userId:profile.id});
+            let user = await userdb.findOne({email:req.body.email});
             if (!user) {
                 user = new userdb({
                     displayName: req.body.displayName,
