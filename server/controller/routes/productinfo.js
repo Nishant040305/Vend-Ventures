@@ -13,12 +13,34 @@ const storage = multer.diskStorage({
 })
 const upload = multer({
     storage:storage
-})
+});
+
 module.exports = (app) => {
 
     app.post("/upload",upload.single('file'), async(req,res)=>{
         console.log(req.file);
-    })
+    });
+
+    app.post("/usercreate", async (req, res) => {
+        try {
+            let user = await userdb.findOne({userId:profile.id});
+            if (!user) {
+                user = new userdb({
+                    displayName: req.body.displayName,
+                    email: req.body.email,
+                    image: "/vendVentures.png"
+                });
+                await user.save();
+                user.userId = user._id;
+                await user.save();
+            }
+            res.status(200).json({ _id: user.userId })
+        } catch (error) {
+            console.error(e);
+            res.status(500).json({ error: req.body.id });
+        }
+    });
+
     app.post("/userinfo", async (req, res) => {
         try {
             let prod = await userdb.findOne({userId: req.body.id });
@@ -28,6 +50,27 @@ module.exports = (app) => {
             res.status(500).json({ error: req.body.id});
         }
     });
+
+    app.post("/userpush", async (req, res) => {
+        // body = {id, pushTo, pushValue}
+        const pushObj = {};
+        pushObj[res.body.pushTo] = res.body.pushValue;
+        try {
+            channel = await userdb.findOneAndUpdate(
+                { 
+                    userId: req.body.id
+                },
+                {  
+                    $push: pushObj
+                },
+            );
+            // console.log('Chat document:', channel);
+        } catch (error) {
+            console.error('Error finding or creating chat document:', error);
+        }
+
+        io.emit('message', data);
+    })
 
     app.post("/productinfo", async (req, res) => {
         console.log(res.body);
@@ -75,7 +118,13 @@ module.exports = (app) => {
             console.log(req.query);
             if (query.searchTerm) {
                 const searchTerm = new RegExp(req.body.searchTerm, 'i');
-                query = {title: searchTerm};
+                query.title = searchTerm;
+                delete query.searchTerm;
+            }
+            if (query.locationTerm) {
+                const locationTerm = new RegExp(req.body.locationTerm, 'i');
+                query.location = locationTerm;
+                delete query.locationTerm;
             }
             const products = await productdb.find(query);
     

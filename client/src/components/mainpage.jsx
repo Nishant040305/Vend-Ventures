@@ -63,6 +63,9 @@ const Mainpage=()=>{
     if (params.has("c")) {
         query["category"] = params.get("c").replace(/\+/g, ' ');
     }
+    if (params.has("l")) {
+        query["locationTerm"] = params.get("l").replace(/\+/g, ' ');
+    }
     const getDetails = async()=>{
         try{
             const response = await axios.post('http://localhost:5000/productlist/', query, {
