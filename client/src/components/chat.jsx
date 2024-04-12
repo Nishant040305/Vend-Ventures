@@ -3,6 +3,7 @@ import './chat.css';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { socket } from '../socket';
 import {useParams,useLocation} from "react-router-dom";
 const Message =(props)=>{
     return(
@@ -18,8 +19,23 @@ const Message =(props)=>{
 const Chats = ()=>{
     const {chatId} = useParams();
     const {state} = useLocation();
-    const {user, owner, channel} = state;
-    console.log(state);
+    const {user, owner, channel, isOwner} = state;
+    // console.log(state);
+
+    socket.connect();
+
+    socket.on('message', (message) => {
+        console.log(message);
+    });
+
+    function sendMessage(value) {
+        var msg = {
+            channel: chatId,
+            user: isOwner ? owner._id : user._id,
+            message: { type: "text", content: value || "Hello World" }
+        }
+        socket.emit('message', msg);
+    }
 
     return(
         <div className="chats">
@@ -59,7 +75,7 @@ const Chats = ()=>{
                         <Message sender="left"></Message>
 
                     </div>
-                    <div className="message-chat"><input className="message-box"></input><div><button className="btn btn-success">Send</button></div></div>
+                    <div className="message-chat"><input className="message-box"></input><div><button onClick={()=>{sendMessage()}} className="btn btn-success">Send</button></div></div>
                 </div>
             </div>
             <Footer></Footer>
