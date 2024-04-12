@@ -11,6 +11,10 @@ import RealState from './components/productForm/realState';
 import Electronics from './components/productForm/electorics';
 import MotorCycle from './components/productForm/motorCycle';
 
+import Cart from './components/cart';
+import Chats from './components/Chats'
+
+
 import React, { useState, useEffect } from 'react';
 import { socket } from './socket';
 import { ConnectionState } from './components/ConnectionState';
@@ -53,7 +57,13 @@ function App() {
       <ConnectionManager />
       <MyForm />
       <Routes>
+
+          <Route path="/:searchTerm" element = {<Mainpage></Mainpage>}></Route>
+          <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/Chats" element={<Chats></Chats>}></Route>
+
         <Route path="/" element = {<Mainpage></Mainpage>}></Route>
+
         <Route path="/product/:productID" element = {<Product></Product>}></Route>
         <Route path="/post/mobile" element={<MobilePost></MobilePost>}></Route>
         <Route path="/error" element={<Error></Error>}></Route>

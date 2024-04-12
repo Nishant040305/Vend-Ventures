@@ -27,7 +27,7 @@ const Product =()=>{
         line.style.background = change;
       }
     const userInfo = async()=>{
-        console.log("USERINFO")
+        // console.log("USERINFO")
         try {
             const response_ = await axios.post('http://localhost:5000/userinfo/', {id: `${dt2.userId}`,
                 headers: {
@@ -38,7 +38,7 @@ const Product =()=>{
                 throw new Error('Failed to fetch data');
             }
             const data_ = response_.data;
-            console.log(data_)
+            // console.log(data_)
             if (data_.error) {
                 throw new Error(data_.error);
             } else {
@@ -59,7 +59,7 @@ const Product =()=>{
                     'Accept': 'application/json',
                 }
             });
-            console.log(response.data.data)
+            // console.log(response.data.data)
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }
@@ -77,11 +77,7 @@ const Product =()=>{
     useEffect(() => {
         fetchProduct()
     }, [])
-    console.log(info.seller);
-    // useEffect(() => {
-    //     console.log(seller);
-    // }, [seller]);
-    
+
 
     return(
         <>
@@ -93,23 +89,19 @@ const Product =()=>{
         <div className="container-productDetails container flex">
           <div className="left n">
             <div className="main_image">
-              <img src="/images/img1.jpg" className="slide"/>
+
+              {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
             </div>
             <div className="option flex">
-            <img src="/images/img1.jpg" onClick={() => img('/images/img1.jpg')}/>
-            <img src="/images/img2.jpg" onClick={() => img('/images/img2.jpg')}/>
-            <img src="/images/img3.jpg" onClick={() => img('/images/img3.jpg')}/>
-            <img src="/images/img4.jpeg" onClick={() => img('/images/img4.jpeg')}/>
-            <img src="/images/img5.jpg" onClick={() => img('/images/img5.jpg')}/>
-
+            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
 
             </div>
-            <div className="product-description">
+            <div className="product-Description">
                 <h3>Description</h3>
                 {info.dt&&<div>
-                {Object.keys(info.dt.description).map((key, index) => (
-                <div  className="description-data" key={index}>
-                    <strong>{key}:</strong> {info.dt.description[key]}
+                {Object.keys(info.dt.Description).map((key, index) => (
+                <div  className="Description-data" key={index}>
+                    <strong>{key}:</strong> {info.dt.Description[key]}
                 </div>
             ))}
            
@@ -128,7 +120,7 @@ const Product =()=>{
             </div>
             
             <h4 className="align-left "> <small className="color-change-product">Rs.</small>{info.dt&&info.dt.price}</h4>
-            <p className="align-left color-change-product" >{info.dt&&info.dt.description.description}</p>
+            <p className="align-left color-change-product" >{info.dt&&info.dt.Description.Description}</p>
             <p className="align-left color-change-product ">{info.dt&&info.dt.location}</p>
             <hr/>
             <div className="profile">
@@ -142,7 +134,7 @@ const Product =()=>{
             </div>
             <div className="chatSectsnafiXsf">
             <button className="product-chat-bag">Chat with seller</button>
-            <h5  className="align-left ">Posted in</h5>
+            <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
             <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
             <button className="product-chat-bag">Add to Bag</button>

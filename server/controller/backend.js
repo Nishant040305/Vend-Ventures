@@ -1,6 +1,6 @@
 require("dotenv").config();
 const connectToMongo = require("../models/mongodb");
-
+const path = require("path");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -29,6 +29,8 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }))
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 //setuppassport
 
 app.use(bodyParser.json());
@@ -71,7 +73,7 @@ passport.deserializeUser((user,done)=>{
 //initialize google oauth
 app.get("/auth/google",passport.authenticate("google",{scope:["profile","email"]}))
 app.get("/auth/google/callback",passport.authenticate("google",{
-    successRedirect:"http://localhost:3000/dashboard",
+    successRedirect:"http://localhost:3000/",
     failureRedirect:"http://localhost:3000/login"}
 ))
 

@@ -1,59 +1,77 @@
 import React,{useState} from "react";
 import "./mobilePost.css";
 import {useNavigate,useParams,useLocation} from "react-router-dom";
-
+import axios from "axios";
 const MobilePost=()=>{
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState({
+        index1:"",
+        index2:"",
+        index3:"",
+        index4:"",
+        index5:"",
+        index6:"",
+        index7:"",
+        index8:""
+
+    });
     const {state}=useLocation();
     const navigate = useNavigate()
-    const [userdata,setUserd] = useState(state)
+    const [userdata,setUserd] = useState()
     const [des,setDes] = useState(
         {
-            brand:"",
-            description:"",
+            Brand:"",
+            Description:"",
         }
     )
 
     const [ user, setUser] = useState({
-        // userId:"t",
+        userId:userdata.userId,
         location:"",
         category:"Mobile",
         title:"",
         location:"",
         phoneNumber:"",
-        description:{},
+        Description:{},
         images:[]
  })
-    const sendRequest=async()=>{
-        //console.log(user);
+ const sendRequest = async () => {
+    try {
         const formData = new FormData();
-        images.forEach((image, index) => {
-            formData.append(`image${index}`, image)});
-        try{
-            const response = await fetch('http://localhost:5000/productcreate/', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Accept':"/",
-                  },
-                  body: JSON.stringify(user)
-                }).then(response => response.json()).then(data=>{
-                  if(data.error){
-                      throw new Error(data.error);
-                  }
-                  else{
-                      navigate('/');
-                  }
-                }).catch (error=>{
-                      //console.log(error.message)
-                    
-                }) 
-                
-            }
-            catch(err){
-              //console.log("Some error occured");
-            }
+
+Object.entries(images).forEach(([key, image]) => {
+    formData.append('files',image);
+
+    // Use the key as the field name
+});
+console.log(formData);
+console.log(user);
+const userJson = JSON.stringify(user);
+formData.append('user', userJson);
+
+
+        const response = await axios({
+            method: 'POST',
+            url: 'http://localhost:5000/productcreate/',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            data: formData
+        });
+
+        if(response.data.error){
+            throw new Error(response.data.error);
+        }
+        else{
+            navigate('/');
+        }
     }
+    catch(err){
+        //console.log(err.message);
+    }
+
+}
+
+
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
@@ -63,8 +81,15 @@ const MobilePost=()=>{
         //console.log(user);
     }
     const handleImageChange = e => {
-        setImages([...e.target.files]); // Convert the FileList to an array
-        setUser(images);
+        let name = `index${e.target.name}`;
+        setImages({
+            ...images,
+            [name]: e.target.files[0]
+        });
+        setUser({
+            ...user,
+            ["images"]:images
+        });
     }
     const handleChangeD = e => {
         const { name, value } = e.target
@@ -74,7 +99,7 @@ const MobilePost=()=>{
         })
         setUser({
             ...user,
-            ["description"]:des
+            ["Description"]:des
         })
         //console.log(user);
     }
@@ -91,17 +116,17 @@ const MobilePost=()=>{
                     <div className="mobilePost-title">INCLUDE SOME DETAILS</div>
                     <div className="mobile-data">
                         <div className="mobileheading">Brand *</div>
-                        <input type="text" className="data-mobile-input" name="brand" value={des.brand} onChange={handleChangeD}/>
+                        <input type="text" className="data-mobile-input" name="Brand" value={des.Brand} onChange={handleChangeD}/>
                     </div>
                     <div className="mobile-data">
                         <div className="mobileheading">Ad title*</div>
                         <input type="text" className="data-mobile-input" name="title" value={user.title} onChange={handleChange}/>
-                        <div className="info-input">Mention the feacture of your item(e.g. brand,model,age,type)</div>
+                        <div className="info-input">Mention the feacture of your item(e.g. Brand,model,age,type)</div>
 
                     </div>
                     <div className="mobile-data">
                     <div className="mobileheading">Description*</div>
-                    <input type="text" className="data-mobile-input Xcyux" name="description" value={des.description} onChange={handleChangeD}/>
+                    <input type="text" className="data-mobile-input Xcyux" name="Description" value={des.Description} onChange={handleChangeD}/>
                     <div className="info-input">Include condition,features and reason for selling</div>
                     </div>
                 </section>
@@ -110,8 +135,21 @@ const MobilePost=()=>{
                     <div className="mobileheading">Price*</div>
                     <input className="data-mobile-input" name="price" value={user.price} onChange={handleChange}></input>
                 </section>
-                <section className="mobilePost-section">
-                    <input type="file" multiple onChange={handleImageChange} />
+
+                <section className="mobilePost-section ">
+                <div className="mobilePost-title">UPLOAD IMAGES*</div>
+                    <div className="file-uploading">
+                        
+                    <label className="file-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"></img><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} required /></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="file-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    </div>
+
                 </section>
 
                 <section className="mobilePost-section">
@@ -129,6 +167,8 @@ const MobilePost=()=>{
                 </section>
                 <section className="mobilePost-section post">
                     <button className=" btn mobilePost-button" onClick={(e)=>{sendRequest()}}>Post now</button>
+                    {/* <button className=" btn mobilePost-button" onClick={(e)=>{sendImage()}}>image now</button> */}
+
                 </section>
             </div>
         </div>

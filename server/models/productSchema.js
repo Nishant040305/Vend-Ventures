@@ -22,7 +22,7 @@ const productSchema = new Schema(
             type:String,
             required:true
         },
-        description:{
+        Description:{
             type:Object,
             default:{}, // {desc, area, ...}
         },
@@ -38,7 +38,8 @@ const productSchema = new Schema(
         },
         phoneNumber:{
             type:String
-        }
+        },
+        
     }
 )
 
