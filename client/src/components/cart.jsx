@@ -35,6 +35,7 @@ const CartItem=()=>{
 }
 const Cart = () =>{
     const {state}=useLocation();
+    
     return(
         <div className="cart">
             <Navbar></Navbar>

@@ -29,6 +29,7 @@ const loginwithgoogle =()=>{
 }
 
 const Navbar =()=>{
+    const[catv,setCatv] = useState(null);
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
@@ -71,16 +72,17 @@ const Navbar =()=>{
     }, [])
    
     const visible = (e) => {
-        let ele = document.getElementsByClassName("header-bottom-bar");
-        for(let i = 0; i < ele.length; i++) {
-            if(ele[i].style.visibility === "visible"){
-                ele[i].style.visibility = "hidden";
-            }
-            else{
-                ele[i].style.visibility = "visible";
+        // let ele = document.getElementsByClassName("header-bottom-bar");
+        // for(let i = 0; i < ele.length; i++) {
+        //     if(ele[i].style.visibility === "visible"){
+        //         ele[i].style.visibility = "hidden";
+        //     }
+        //     else{
+        //         ele[i].style.visibility = "visible";
 
-            }
-        }
+        //     }
+        // }
+        setCatv(1-catv);
     }
     const visibleLogin =()=>{
         
@@ -134,7 +136,7 @@ const Navbar =()=>{
                 
                 {(DEBUG || userdata)?<button className="sell-button btn " type="button" onClick={showAdd}>SELL</button>:<button className="sell-button btn " type="button" onClick={visibleLogin}>SELL</button>}
             </form>
-            <div className="header-bottom-bar">
+            {catv?<div className="header-bottom-bar">
                 <ul className="navbar-menu-cat">
                 <li className="text-bold">All Categories<i className="fa-solid fa-angle-down"></i></li>
                 <li>Mobile</li>
@@ -144,7 +146,7 @@ const Navbar =()=>{
                 <li>Electronic Appliances</li>
 
             </ul>
-            </div>
+            </div>:null}
             
 
         </div>

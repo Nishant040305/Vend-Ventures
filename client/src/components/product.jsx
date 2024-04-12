@@ -26,6 +26,7 @@ const Product =()=>{
         const line = document.querySelector('.home');
         line.style.background = change;
       }
+   
     const userInfo = async()=>{
         console.log("USERINFO")
         try {
@@ -137,7 +138,7 @@ const Product =()=>{
             <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
             <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
-            <button className="product-chat-bag">Add to Bag</button>
+            <button className="product-chat-bag" onClick={()=>{}}>Add to Bag</button>
             </div>
             
           </div>
