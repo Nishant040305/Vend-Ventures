@@ -54,7 +54,7 @@ module.exports = (app) => {
     app.post("/userpush", async (req, res) => {
         // body = {id, pushTo, pushValue}
         const pushObj = {};
-        pushObj[res.body.pushTo] = res.body.pushValue;
+        pushObj[req.body.pushTo] = req.body.pushValue;
         try {
             user = await userdb.findOneAndUpdate(
                 { 
@@ -64,11 +64,10 @@ module.exports = (app) => {
                     $push: pushObj
                 },
             );
+            console.log(user);
         } catch (error) {
             console.error('Error:', error);
         }
-
-        io.emit('message', data);
     })
 
     app.post("/productinfo", async (req, res) => {
