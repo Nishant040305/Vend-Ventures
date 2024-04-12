@@ -39,14 +39,30 @@ const Navbar =()=>{
     }
 
     // URLSearchParams
-    const searchTerm = () => {
+    const search = () => {
         let params = new URLSearchParams(window.location.search);
-        if (params.has("s")) {
-            params.set("s", query);
-        } else {
-            params.append("s", query);
-        }
-        navigate(`/?${params.toString()}`)
+        if (query) {
+            if (params.has("s")) {
+                params.set("s", query);
+            } else {
+                params.append("s", query);
+            }
+        } else params.delete("s");
+        navigate(`/?${params.toString()}`);
+        window.location.reload();
+    }
+
+    const filterCategory = (categ) => {
+        let params = new URLSearchParams(window.location.search);
+        if (categ) {
+            if (params.has("c")) {
+                params.set("c", categ);
+            } else {
+                params.append("c", categ);
+            }
+        } else params.delete("c");
+        navigate(`/?${params.toString()}`);
+        window.location.reload();
     }
 
     const handleSearch =(e)=>{
@@ -122,7 +138,7 @@ const Navbar =()=>{
                             </div>
                         </div>
                     <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{searchTerm()}}>Search</button>
+                    <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{search()}}>Search</button>
                     <button className="btn  category" type="button" onClick={(e)=>{visible(e)}}>Category</button>
                     {userdata?<div className="icon cart root"><img width="35" height="35" src="cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
                     {userdata?<div className="icon root"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
@@ -138,12 +154,12 @@ const Navbar =()=>{
             </form>
             {catv?<div className="header-bottom-bar">
                 <ul className="navbar-menu-cat">
-                <li className="text-bold">All Categories<i className="fa-solid fa-angle-down"></i></li>
-                <li>Mobile</li>
-                <li>Cars</li>
-                <li>Bikes</li>
-                <li>Properties</li>
-                <li>Electronic Appliances</li>
+                <li onClick={()=>{filterCategory(null)}} className="text-bold">All Categories<i className="fa-solid fa-angle-down"></i></li>
+                <li onClick={()=>{filterCategory("Mobile")}}>Mobile</li>
+                <li onClick={()=>{filterCategory("Automobiles-car")}}>Cars</li>
+                <li onClick={()=>{filterCategory("Automobiles-mototcycles")}}>Bikes</li>
+                <li onClick={()=>{filterCategory("realState")}}>Properties</li>
+                <li onClick={()=>{filterCategory("Electronics")}}>Electronic Appliances</li>
 
             </ul>
             </div>:null}

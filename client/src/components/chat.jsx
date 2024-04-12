@@ -1,5 +1,5 @@
 import React from "react";
-import './Chats.css';
+import './chat.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import axios from "axios";

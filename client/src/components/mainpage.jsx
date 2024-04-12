@@ -57,10 +57,10 @@ const Mainpage=()=>{
     const [query,setQuery] = useState({});
     var params = new URLSearchParams(window.location.search);
     if (params.has("s")) {
-        setQuery({ searchTerm: params.get("s")});
+        query["searchTerm"] = params.get("s").replace(/\+/g, ' ');;
     }
     if (params.has("c")) {
-        query["category"] = params.get("c");
+        query["category"] = params.get("c").replace(/\+/g, ' ');
     }
     const getDetails = async()=>{
         try{
@@ -90,7 +90,7 @@ const Mainpage=()=>{
         <div className="mainpage">
             <Navbar></Navbar>
             <div className="mainpage-card-container " id = "test">
-            {product.map((info, index) => (<Card prize={info.price} images = {info.images[0] || "vendVentures.png"} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
+            {product.map((info, index) => (<Card images={info.images[0] || "vendVentures.png"} prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
             </div>
         <Footer></Footer>
         </div>

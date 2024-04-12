@@ -11,13 +11,15 @@ import RealState from './components/productForm/realState';
 import Electronics from './components/productForm/electorics';
 import MotorCycle from './components/productForm/motorCycle';
 import Cart from './components/cart';
-import Chats from './components/Chats'
+import Chats from './components/chat'
+
+
 import React, { useState, useEffect } from 'react';
 import { socket } from './socket';
-import { ConnectionState } from './components/ConnectionState';
-import { ConnectionManager } from './components/ConnectionManager';
-import { Events } from "./components/Events";
-import { MyForm } from './components/MyForm';
+import { ConnectionState } from './components/socketTest/ConnectionState';
+import { ConnectionManager } from './components/socketTest/ConnectionManager';
+import { Events } from "./components/socketTest/Events";
+import { MyForm } from './components/socketTest/MyForm';
 
 // const DEBUG = true;
 
@@ -49,16 +51,17 @@ function App() {
 
   return(
   <div className='App'>
-      <ConnectionState isConnected={ isConnected } />
+
+      {/* SOCKET.IO DEBUG */}
+      {/* <ConnectionState isConnected={ isConnected } />
       <Events events={ events } />
       <ConnectionManager />
-      <MyForm />
-      <Routes>
-      <Route path="/product/:productID" element = {<Product></Product>}></Route>
+      <MyForm /> */}
 
+      <Routes>
           <Route path="/:_" element = {<Mainpage></Mainpage>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
-          <Route path="/Chats" element={<Chats></Chats>}></Route>
+          <Route path="/chat/:chatId" element={<Chats></Chats>}></Route>
 
         <Route path="/" element = {<Mainpage></Mainpage>}></Route>
 
@@ -66,7 +69,7 @@ function App() {
         <Route path="/error" element={<Error></Error>}></Route>
         <Route path="/post/car" element={<CarPost></CarPost>}></Route>
         <Route path="post/realstate" element = {<RealState></RealState>}></Route>
-        <Route path = "post/electronics" element = {<Electronics></Electronics>}></Route>
+        <Route path="post/electronics" element = {<Electronics></Electronics>}></Route>
         <Route path="post/motorcycle" element={<MotorCycle></MotorCycle>}></Route>
         <Route path="post" element={<Form></Form>}/>
         <Route path="*" element={<Mainpage></Mainpage>}></Route>
