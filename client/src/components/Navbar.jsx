@@ -76,6 +76,11 @@ const Navbar =()=>{
         navigate(`/?${params.toString()}`);
         window.location.reload();
     }
+    const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+          search();
+        }
+      };
 
     const searchByLocation = (event) => {
         if (event.keyCode !== 13) return;
@@ -191,7 +196,7 @@ const Navbar =()=>{
                                 </div>
                             </div>
                         </div>
-                    <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" placeholder="Search" aria-label="Search"/>
+                    <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" onKeyDown={handleKeyPress} placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{search()}}>Search</button>
                     <button className="btn  category" type="button" onClick={(e)=>{visible(e)}}>Category</button>
                     {userdata?<div className="icon cart root"><img width="35" height="35" src="/cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
