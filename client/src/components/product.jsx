@@ -74,6 +74,8 @@ const Product =()=>{
     // cart
     async function addToCart() {
         try{
+            alert("added to the bag");
+
             const response = await axios.post('http://localhost:5000/userPush/', {
                 pushTo: "cart",
                 pushValue: productID,
@@ -86,10 +88,13 @@ const Product =()=>{
             if(response.data.error){
                 console.log(response.data.error);
             }
+            else{
+            }
         }
         catch(error){
             console.log(error.message);
         }
+        
     }
 
 
