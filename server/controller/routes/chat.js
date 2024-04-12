@@ -31,7 +31,7 @@ module.exports = (app) => {
                 userId: userId || "test"
             });
             if (!channel) {
-                return res.status(404).json({ error: 'Chat not found' });
+                return res.status(200).json({ error: 'Chat not found' });
             }
             res.status(200).json({ channel });
         } catch (error) {

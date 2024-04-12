@@ -16,7 +16,7 @@ const MobilePost=()=>{
     });
     const {state}=useLocation();
     const navigate = useNavigate()
-    const [userdata,setUserd] = useState()
+    const [userdata,setUserd] = useState(state)
     const [des,setDes] = useState(
         {
             brand:"",

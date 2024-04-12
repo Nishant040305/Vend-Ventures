@@ -2,6 +2,7 @@ import React from "react";
 import './chat.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import {useParams} from "react-router-dom";
 const Message =(props)=>{
     return(
         <div className="message" style={{float:props.sender}}>
@@ -14,6 +15,8 @@ const Message =(props)=>{
     )
 }
 const Chats =()=>{
+    const {chatId} = useParams();
+    
     return(
         <div className="chats">
             <Navbar/>

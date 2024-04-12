@@ -5,7 +5,7 @@ import Footer from "./Footer.jsx";
 import {useState,useEffect} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,useLocation} from "react-router-dom";
 
 const Product =()=>{
     // const[dt,setDt] = useState();
@@ -14,18 +14,66 @@ const Product =()=>{
     const[info,setInfo] = useState({
         dt:"",
         seller:""
-});
+    });
     const navigate = useNavigate();
+    const {state} = useLocation();
     const {productID} = useParams();
+    
+    async function fetchChat() {
+        // console.log(info.seller);
+        try{
+            const response = await axios.post('http://localhost:5000/getChat/', {
+                productId: productID,
+                userId: state._id
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if(response.data.error){
+                // new chat
+                try {
+                    const response = await axios.post('http://localhost:5000/createChat/', {
+                        productId: productID,
+                        ownerId: info.seller.id,
+                        userId: state._id
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    if (response.data.error) {
+                        throw new Error(response.data.error);
+                    } else {
+                        console.log("NEW CHAT", response.data);
+                        openChat(response.data._id)
+                    }
+                } catch (error) {
+                    console.log(error.message);
+                }
+            }
+            else{
+                console.log("LOAD CHAT", response.data)
+                openChat(response.data.channel._id)
+            }
+        }
+        catch(error){
+            console.log(error.message);
+        }
+    }
+    function openChat(cid) {
+        navigate(`/chat/${cid}`)
+    }
+
     function img(anything) {
         document.querySelector('.slide').src = anything;
-      }
-  
-    
-      function change(change) {
+    }
+    function change(change) {
         const line = document.querySelector('.home');
         line.style.background = change;
-      }
+    }
     const userInfo = async()=>{
         // console.log("USERINFO")
         try {
@@ -68,7 +116,7 @@ const Product =()=>{
                 throw new Error(data.error);
             } else {
                 dt2 = data.data;
-        if(dt2!=null) userInfo();
+                if(dt2!=null) userInfo();
             }
         } catch (e) { console.error(e) }
         
@@ -133,7 +181,7 @@ const Product =()=>{
                 
             </div>
             <div className="chatSectsnafiXsf">
-            <button className="product-chat-bag">Chat with seller</button>
+            <button className="product-chat-bag" onClick={fetchChat}>Chat with seller</button>
             <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
             <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
