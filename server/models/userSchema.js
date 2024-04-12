@@ -4,19 +4,24 @@ const userSchema = new Schema(
     {
         userId:{
             type:String,
-            required:true
         },
         displayName:{
             type:String,
-            required:true,
+            required:true
         },
-        emails:{
+        email:{
             type:String
         },
         image:{
             type:String
         },
         products:{
+            type:[String]
+        },
+        cart:{
+            type:[String]
+        },
+        likes:{
             type:[String]
         }
     }
