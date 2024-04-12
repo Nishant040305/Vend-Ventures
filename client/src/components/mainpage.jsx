@@ -35,7 +35,7 @@ const Card=(props)=>{
     }
     return(
         <div className="mainpage-cards card">
-            <img className="card-img-top" alt="..."src="vendVentures.png" onClick={async () => await onCardClick()}></img>
+            <img className="card-img-top" alt="..."src={props.images} onClick={async () => await onCardClick()}></img>
             <div className="card-body">
             <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>{props.title}</div><img class="heart" id={`${props.id}`}  src="heart.png" onClick={(e)=>{likeDislike(props.id)}}></img></div>
             
@@ -57,7 +57,7 @@ const Mainpage=()=>{
     const [query,setQuery] = useState({});
     var params = new URLSearchParams(window.location.search);
     if (params.has("s")) {
-        setQuery({ searchTerm: params.get("s")});
+        query["searchTerm"] = params.get("s");
     }
     if (params.has("c")) {
         query["category"] = params.get("c");
@@ -90,7 +90,7 @@ const Mainpage=()=>{
         <div className="mainpage">
             <Navbar></Navbar>
             <div className="mainpage-card-container " id = "test">
-            {product.map((info, index) => (<Card prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
+            {product.map((info, index) => (<Card images={info.images[0] || "vendVentures.png"} prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
             </div>
         <Footer></Footer>
         </div>

@@ -38,14 +38,15 @@ const Navbar =()=>{
     }
 
     // URLSearchParams
-    const searchTerm = () => {
+    const search = () => {
         let params = new URLSearchParams(window.location.search);
         if (params.has("s")) {
             params.set("s", query);
         } else {
             params.append("s", query);
         }
-        navigate(`/?${params.toString()}`)
+        navigate(query ? `/?${params.toString()}` : "/");
+        window.location.reload();
     }
 
     const handleSearch =(e)=>{
@@ -120,7 +121,7 @@ const Navbar =()=>{
                             </div>
                         </div>
                     <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{searchTerm()}}>Search</button>
+                    <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{search()}}>Search</button>
                     <button className="btn  category" type="button" onClick={(e)=>{visible(e)}}>Category</button>
                     {userdata?<div className="icon cart root"><img width="35" height="35" src="cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
                     {userdata?<div className="icon root"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">

@@ -52,12 +52,14 @@ function App() {
 
   return(
   <div className='App'>
-      <ConnectionState isConnected={ isConnected } />
+
+      {/* SOCKET.IO DEBUG */}
+      {/* <ConnectionState isConnected={ isConnected } />
       <Events events={ events } />
       <ConnectionManager />
-      <MyForm />
-      <Routes>
+      <MyForm /> */}
 
+      <Routes>
           <Route path="/:_" element = {<Mainpage></Mainpage>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/Chats" element={<Chats></Chats>}></Route>
