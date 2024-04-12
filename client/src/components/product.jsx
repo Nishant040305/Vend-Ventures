@@ -130,7 +130,10 @@ const Product =()=>{
         fetchProduct()
     }, [])
 
-
+    function copyToClipboard() {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Link Copied to Clipboard")
+    }
     return(
         <>
         <Navbar></Navbar>
@@ -160,7 +163,7 @@ const Product =()=>{
             <div className="Dcrrchxaoi">
             <h3 className="product-title">{info.dt&&info.dt.title}</h3>
             <div>
-            <i className="fa-solid fa-share-nodes"></i>
+            <button className="btn"  onClick={()=>{copyToClipboard()}}><i className="fa-solid fa-share-nodes"></i></button>
             <i className="fa-regular fa-heart"></i>
             </div>
             
@@ -183,8 +186,8 @@ const Product =()=>{
             <button className="product-chat-bag" onClick={fetchChat}>Chat with seller</button>
             <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
-            <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
-            <button className="product-chat-bag">Add to Bag</button>
+            <div className="color-change-product align-left" style={{marginLeft:50}}><img src="/location.png" width="30px" height="30px"></img>{info.dt&&info.dt.location}</div>
+            <button className="product-chat-bag" style={{marginTop:3}}>Add to Bag</button>
             </div>
             
           </div>

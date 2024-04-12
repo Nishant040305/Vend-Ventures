@@ -4,6 +4,7 @@ import {useNavigate,useParams} from "react-router-dom";
 import "./Navbar.css";
 import axios from "axios";
 import './loginpage.css';
+import { GoogleLogin } from 'react-google-login';
 
 const DEBUG = false;
 
@@ -29,15 +30,35 @@ const loginwithgoogle =()=>{
 }
 
 const Navbar =()=>{
+    const [name,setName] = useState();
+    const [varotp,setvartp]  = useState();
+    const [otp,setOtp] = useState();
+    const [otpMessage,setOtpMessage] = useState(false);
     const[catv,setCatv] = useState(null);
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
     const [query,setQuery] = useState();
+    const [email,setEmail] = useState();
     const showAdd = ()=>{
         navigate('/post',{ state: userdata });
     }
-
+    const login_email = async()=>{
+        try {
+            const response = await axios.post('http://localhost:5000/loginEmail/',{email:email
+                ,headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            // console.log(response.data.data)
+            if (response.status !== 200) {
+                throw new Error('Failed to Send Email');
+            }
+            else{
+                setvartp(response.otp)
+            }
+        } catch (e) { console.error(e) }
+    }
     // URLSearchParams
     const search = () => {
         let params = new URLSearchParams(window.location.search);
@@ -51,7 +72,6 @@ const Navbar =()=>{
         navigate(`/?${params.toString()}`);
         window.location.reload();
     }
-
     const filterCategory = (categ) => {
         let params = new URLSearchParams(window.location.search);
         if (categ) {
@@ -88,16 +108,7 @@ const Navbar =()=>{
     }, [])
    
     const visible = (e) => {
-        // let ele = document.getElementsByClassName("header-bottom-bar");
-        // for(let i = 0; i < ele.length; i++) {
-        //     if(ele[i].style.visibility === "visible"){
-        //         ele[i].style.visibility = "hidden";
-        //     }
-        //     else{
-        //         ele[i].style.visibility = "visible";
 
-        //     }
-        // }
         setCatv(1-catv);
     }
     const visibleLogin =()=>{
@@ -112,8 +123,24 @@ const Navbar =()=>{
 
         setSeen(!seen);
     }
+    const handleEmail =(e)=>{
+        setEmail(e.target.value)
+    }
+    const handleName =(e)=>{
+        setName(e.target.value);
+    }
+    const handleOtp =(e)=>{
+        setOtp(e.target.value);
+    }
+    const login_Confirm =()=>{
+        if(varotp==otp){
+            
+
+        }
+    }
     const windowWidth = useWindowWidth();
     const isVisible = windowWidth >=1121 ;
+    
     // //console.log(userdata);
     return(
         <div className="header">
@@ -140,7 +167,7 @@ const Navbar =()=>{
                     <input className="form-control mr-sm-2 search root" name="category" value={query} onChange={handleSearch}type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success submit-button" type="button" onClick={()=>{search()}}>Search</button>
                     <button className="btn  category" type="button" onClick={(e)=>{visible(e)}}>Category</button>
-                    {userdata?<div className="icon cart root"><img width="35" height="35" src="cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
+                    {userdata?<div className="icon cart root"><img width="35" height="35" src="/cart.png" onClick={()=>{showCart()}}></img></div>:<div/>}
                     {userdata?<div className="icon root"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
                         <path fill="none" d="M25.532 23.71c-1.71-1.71-2.53-3.47-2.53-8.71 0-5.31-3.432-9-8.003-9s-8.004 3.69-8.004 9c0 5.24-.82 7-2.53 8.71-.11.1-.19.2-.25.29H25.78c-.058-.09-.138-.19-.248-.29z"/>
                         <path fill="#494c4e" d="M9.34 20.974c.263.087.546-.054.634-.316.3-.903.36-1.605.36-3.195 0-3.065.418-4.508 2.52-6.61.195-.194.195-.51 0-.706-.195-.195-.512-.195-.707 0-2.323 2.323-2.814 4.01-2.814 7.317 0 1.484-.052 2.11-.308 2.88-.088.26.054.543.316.63z"/>
@@ -176,13 +203,21 @@ const Navbar =()=>{
                         </div>
                         <div className="login-cross" onClick={notvisibleLogin}><img src="close.png"></img></div>
                     </div>
-                    <div className="Login-data">
+                    {otpMessage?<div className="Login-data">
+                        Enter your OTP.
+                    </div>:<div className="Login-data">
                         Enter your email to log in.
-                    </div>
+                    </div>}
+                    {otpMessage?<div className="Login-content">
+                    <input className ="Login-email-input" onChange={handleName}placeholder="     Enter your DisplayName" value={name}></input>
+                    <input className ="Login-email-input" onChange={handleOtp}placeholder="     Enter your email" value={otp}></input>
+
+                        <button className=" btn Login-email-buttton" onClick={()=>{login_Confirm()}}>Continue</button>
+                    </div>:
                     <div className="Login-content">
-                        <input className ="Login-email-input" placeholder="     Enter your email"></input>
-                        <button className=" btn Login-email-buttton">Continue</button>
-                    </div>
+                        <input className ="Login-email-input" onChange={handleEmail}placeholder="     Enter your email" value={email}></input>
+                        <button className=" btn Login-email-buttton" onClick={()=>{otpConfirm()}}>Continue</button>
+                    </div>}
 
                 </div>
                 <div className="line" style={{display:"flex"}}>
@@ -198,9 +233,7 @@ const Navbar =()=>{
                             <button className="btn Login-email-buttton google" onClick={loginwithgoogle}>
                                 <img src="google.png"></img>Continue with Google
                             </button>
-                            <button className="btn Login-email-buttton facebook">
-                               <img src="facebook.ico"></img> Continue with Facebook
-                            </button>
+                          
                         </div>
                     </div>
                 </div>
