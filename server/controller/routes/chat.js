@@ -15,7 +15,7 @@ module.exports = (app) => {
             });
     
             const savedChat = await newChat.save();
-            res.status(201).json({ _id: savedChat._id });
+            res.status(201).json({ _id: savedChat._id, channel: savedChat });
         } catch (error) {
             console.error('Error creating chat:', error);
             res.status(500).json({ error: 'An error occurred while creating the chat' });
@@ -31,7 +31,7 @@ module.exports = (app) => {
                 userId: userId || "test"
             });
             if (!channel) {
-                return res.status(404).json({ error: 'Chat not found' });
+                return res.status(200).json({ error: 'Chat not found' });
             }
             res.status(200).json({ channel });
         } catch (error) {

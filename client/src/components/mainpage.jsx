@@ -16,7 +16,8 @@ const Card=(props)=>{
             if (!response.data.user && !DEBUG) {
                 document.getElementById("loginBtn").click();
             } else {
-                navigate(`/product/${props.id}`);
+                // console.log(response.data.user);
+                navigate(`/product/${props.id}`, {state:response.data.user});
             }
         } catch (err) {
             console.error(err);
