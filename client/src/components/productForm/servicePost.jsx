@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import './servicePost.css';
+import './servicesPost.css';
 import {useNavigate,useParams,useLocation} from "react-router-dom";
 import axios from "axios";
 
@@ -144,7 +144,7 @@ const Services=()=>{
         </div>
         <div class="paid-service">
             <h2 class="first2">REVIEW YOUR DETAILS</h2>
-                <div style="display: flex;">
+                <div style={{display:"flex"}}>
                 <img class="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
                 <div class="displayName-form">{state.displayName}</div>
                 </div>
@@ -164,4 +164,4 @@ const Services=()=>{
     </div>
     )
 }
-export default Electronics;
+export default Services;

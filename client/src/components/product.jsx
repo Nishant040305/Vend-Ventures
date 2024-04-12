@@ -74,6 +74,8 @@ const Product =()=>{
     // cart
     async function addToCart() {
         try{
+            alert("added to the bag");
+
             const response = await axios.post('http://localhost:5000/userPush/', {
                 pushTo: "cart",
                 pushValue: productID,
@@ -86,10 +88,13 @@ const Product =()=>{
             if(response.data.error){
                 console.log(response.data.error);
             }
+            else{
+            }
         }
         catch(error){
             console.log(error.message);
         }
+        
     }
 
 
@@ -152,34 +157,32 @@ const Product =()=>{
         fetchProduct()
     }, [])
 
-
+    function copyToClipboard() {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Link Copied to Clipboard")
+    }
     return(
         <>
         <Navbar></Navbar>
         <div className="product">
-                
-
-      <section >
-        <div className="container-productDetails container flex">
-          <div className="left n">
-            <div className="main_image">
-
-              {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
-            </div>
-            <div className="option flex">
-            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
-
-            </div>
-            <div className="product-description">
-                <h3>description</h3>
-                {info.dt&&<div>
-                {Object.keys(info.dt.description).map((key, index) => (
-                <div  className="description-data" key={index}>
-                    <strong>{key}:</strong> {info.dt.description[key]}
-                </div>
-            ))}
-           
-                </div>}
+            <section >
+                <div className="container-productDetails container flex">
+                    <div className="left n">
+                        <div className="main_image">
+                            {info.dt&&<img src={info.dt.images[0]} className="slide"/>}
+                        </div>
+                        <div className="option flex">
+                            {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
+                        </div>
+                        <div className="product-description">
+                            <h3>description</h3>
+                            {info.dt&&<div>{Object.keys(info.dt.description).map((key, index) => (
+                                            <div  className="description-data" key={index}>
+                                                <strong>{key}:</strong> {info.dt.description[key]}
+                                            </div>
+                                            ))}
+            
+                                        </div>}
 
             </div>
           </div>
@@ -187,7 +190,7 @@ const Product =()=>{
             <div className="Dcrrchxaoi">
             <h3 className="product-title">{info.dt&&info.dt.title}</h3>
             <div>
-            <i className="fa-solid fa-share-nodes"></i>
+            <button className="btn"  onClick={()=>{copyToClipboard()}}><i className="fa-solid fa-share-nodes"></i></button>
             <i className="fa-regular fa-heart"></i>
             </div>
             

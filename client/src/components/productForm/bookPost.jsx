@@ -141,7 +141,7 @@ const Books=()=>{
         </div>
         <div class="book-names">
             <h2 class="enter2">REVIEW YOUR DETAILS</h2>
-                <div style="display: flex;">
+                <div style={{display:"flex"}}>
                 <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
                 <div className="displayName-form">{state.displayName}</div>
                 </div>
@@ -162,4 +162,4 @@ const Books=()=>{
     </div>
     )
 }
-export default Electronics;
+export default Books;

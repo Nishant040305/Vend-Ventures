@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import './furniturePost.css';
+import './fashionPost.css';
 import {useNavigate,useParams,useLocation} from "react-router-dom";
 import axios from "axios";
 
@@ -144,7 +144,7 @@ const Furniture=()=>{
         </div>
         <div class="tables">
             <h2 class="up2">REVIEW YOUR DETAILS</h2>
-                <div style="display: flex;">
+                <div style={{display:"flex"}}>
                 <img class="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
                 <div class="displayName-form">{state.displayName}</div>
                 </div>
@@ -164,4 +164,4 @@ const Furniture=()=>{
     </div>
     )
 }
-export default Electronics;
+export default Furniture;

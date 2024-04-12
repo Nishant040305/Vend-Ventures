@@ -43,8 +43,8 @@ const Card=(props)=>{
             
             <div className="cards-discription card-text">
                 {props.description} 
-                <br></br><br></br><br></br>
-                {props.location}
+                <br></br><br></br>
+                <img src="location.png" width="30px" height="30px"></img>{props.location}
             </div>
             <div className="cards-prize container">
                 <img src="rupee.png"></img>{props.prize}

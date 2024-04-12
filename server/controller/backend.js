@@ -12,10 +12,61 @@ const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const clientID ="258725350727-cjpj2bljdsfq9299avd3qh67hd36r8pr.apps.googleusercontent.com"
 const clientSecreat="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";
-
 const userdb = require("../models/userSchema");
 const productdb = require("../models/productSchema");
 const chatdb = require("../models/chatSchema")
+function generateOtp() {
+    // Generate a 6 digit random number
+    let otp = crypto.randomInt(100000, 999999);
+    return otp;
+}
+async function sendEmail(userEmail, otp) {
+    // Create a transporter
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'nm.20233205@gmail.com',
+            pass: 'ivns znwe yqmo ddxb'
+        }
+    });
+
+    // Email options
+    
+
+    let mailOptions = {
+      from: 'nm.20233205@gmail.com',
+      to: userEmail,
+      subject: 'Welcome to vendVentures',
+      text: ` 
+Dear User,
+
+Thank you for signing up for Shiksha! We're excited to have you on board.
+
+To get started, please verify your email address by enter this OTP:
+${otp}
+
+Once your email is verified, you can start exploring all the features and benefits we offer.
+
+If you have any questions or need assistance, feel free to contact our support team.
+
+Thank you for choosing us!
+
+Best regards,
+vendVentures
+
+      `
+  };
+  
+    // Send email
+     transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log("failed"+otp)
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
+}
 
 app.use(cors({
     origin:"http://localhost:3000",
@@ -86,9 +137,20 @@ app.get("/login/sucess",async(req,res)=>{
         res.status(200).json({message:"Not Authorized"})
     }
 })
+app.post("/loginEmail",async(req,res)=>{
+    console.log(req.body);
+    try{
+        let var_ = generateOtp();
+        sendEmail(req.body.email,var_)
+        res.status(200).json({otp:var_});
+    }
+    catch(error){
+        res.status(400).json({message:"email not send"})
+    }
+})
 
 app.get("/logout",(req,res,next)=>{
-    req.logout(function(err){
+    req.logout((err)=>{
         if(err){
             return next(err)
         }
