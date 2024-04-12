@@ -57,10 +57,10 @@ const Mainpage=()=>{
     const [query,setQuery] = useState({});
     var params = new URLSearchParams(window.location.search);
     if (params.has("s")) {
-        query["searchTerm"] = params.get("s");
+        query["searchTerm"] = params.get("s").replace(/\+/g, ' ');;
     }
     if (params.has("c")) {
-        query["category"] = params.get("c");
+        query["category"] = params.get("c").replace(/\+/g, ' ');
     }
     const getDetails = async()=>{
         try{

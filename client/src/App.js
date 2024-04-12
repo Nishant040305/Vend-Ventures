@@ -62,7 +62,7 @@ function App() {
       <Routes>
           <Route path="/:_" element = {<Mainpage></Mainpage>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
-          <Route path="/chat" element={<Chats></Chats>}></Route>
+          <Route path="/chat/:chatId" element={<Chats></Chats>}></Route>
 
         <Route path="/" element = {<Mainpage></Mainpage>}></Route>
 
