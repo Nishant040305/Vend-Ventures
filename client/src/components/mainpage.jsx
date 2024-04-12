@@ -52,6 +52,7 @@ const Card=(props)=>{
 }
 const Mainpage=()=>{
     const [product,setProduct] = useState([]);
+
     const [query,setQuery] = useState("")
     let {searchTerm} = useParams();
     console.log(searchTerm);
@@ -65,6 +66,8 @@ const Mainpage=()=>{
     // catch(error){
     //     console.log(error);
     // }
+
+
     // let {state} = useLocation();
     // setQuery(state);
     const getDetails = async()=>{

@@ -3,6 +3,9 @@ import {useNavigate,useParams} from "react-router-dom";
 import "./Navbar.css";
 import axios from "axios";
 import './loginpage.css';
+
+const DEBUG = true;
+
 function toggle(){
     var element = document.getElementById("test");
     element.classList.toggle("active");
@@ -136,7 +139,7 @@ const Navbar =()=>{
                 <hr className="vertical-line"/>
                 {userdata?<div style={{display:"flex",flexDirection:"row"}}><img className="rounded-circle img-profile-icon" src={userdata.image} ></img><button type="button" className="btn sell-button login-button-navbar"  onClick={logout}>Logout</button></div>:<button type="button" className="btn sell-button login-button-navbar" onClick={visibleLogin} id="loginBtn">login</button>}
                 
-                {userdata?<button className="sell-button btn " type="button" onClick={showAdd}>SELL</button>:<button className="sell-button btn " type="button" onClick={visibleLogin}>SELL</button>}
+                {(DEBUG || userdata)?<button className="sell-button btn " type="button" onClick={showAdd}>SELL</button>:<button className="sell-button btn " type="button" onClick={visibleLogin}>SELL</button>}
             </form>
             <div className="header-bottom-bar">
                 <ul className="navbar-menu-cat">
