@@ -13,8 +13,11 @@ import MotorCycle from './components/productForm/motorCycle';
 import Cart from './components/cart';
 import Chats from './components/chat'
 
-
+import Books from './components/productForm/bookPost';
 import React from 'react';
+import Fashions from './components/productForm/fashionPost';
+import Services from './components/productForm/servicePost';
+import Furniture from './components/productForm/furniturePost';
 
 function App() {
   return(
@@ -31,6 +34,11 @@ function App() {
         <Route path="/post/car" element={<CarPost></CarPost>}></Route>
         <Route path="post/realstate" element = {<RealState></RealState>}></Route>
         <Route path="post/electronics" element = {<Electronics></Electronics>}></Route>
+        <Route path="post/motorcycle" element={<MotorCycle></MotorCycle>}></Route>
+        <Route path="post/fashion" element={<Fashions></Fashions>}></Route>
+        <Route path="post/services" element = {<Services></Services>}></Route>
+        <Route path="post/books" element = {<Books></Books>}></Route>
+        <Route path="post/furniture" element = {<Furniture></Furniture>}></Route>
         <Route path="post/motorcycle" element={<MotorCycle></MotorCycle>}></Route>
         <Route path="post" element={<Form></Form>}/>
         <Route path="*" element={<Mainpage></Mainpage>}></Route>

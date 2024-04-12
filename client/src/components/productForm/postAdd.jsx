@@ -29,8 +29,19 @@ const fieldArray = [
         link:"electronics",
     },
     {
-        name:"Automobiles/Motor Cycle",
-        link:"motorcycle"
+        name:"Furnitures",
+        link:"furniture"
+    },
+    {
+        name:"Fashions",
+        link:"fashion"
+    },{
+        name:"Sevices",
+        link:"services"
+    }
+    ,{
+        name:"Books",
+        link:"books"
     }
 ]
 const Form =()=>{
