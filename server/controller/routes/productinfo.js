@@ -74,7 +74,13 @@ module.exports = (app) => {
             console.log(req.query);
             if (query.searchTerm) {
                 const searchTerm = new RegExp(req.body.searchTerm, 'i');
-                query = {title: searchTerm};
+                query.title = searchTerm;
+                delete query.searchTerm;
+            }
+            if (query.locationTerm) {
+                const locationTerm = new RegExp(req.body.locationTerm, 'i');
+                query.location = locationTerm;
+                delete query.locationTerm;
             }
             const products = await productdb.find(query);
     

@@ -29,6 +29,7 @@ const loginwithgoogle =()=>{
 }
 
 const Navbar =()=>{
+    const [location,setLocation] = useState();
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
@@ -51,6 +52,19 @@ const Navbar =()=>{
         window.location.reload();
     }
 
+    const searchByLocation = () => {
+        let params = new URLSearchParams(window.location.search);
+        if (query) {
+            if (params.has("l")) {
+                params.set("l", query);
+            } else {
+                params.append("l", query);
+            }
+        } else params.delete("l");
+        navigate(`/?${params.toString()}`);
+        window.location.reload();
+    }
+
     const filterCategory = (categ) => {
         let params = new URLSearchParams(window.location.search);
         if (categ) {
@@ -63,7 +77,9 @@ const Navbar =()=>{
         navigate(`/?${params.toString()}`);
         window.location.reload();
     }
-
+    const handlelocation = (e)=>{
+        setLocation(e.target.value);
+    }
     const handleSearch =(e)=>{
         setQuery(e.target.value);
     }
@@ -124,7 +140,7 @@ const Navbar =()=>{
                                     <svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd">
                                         <path className="rui-w4DG7" d="M448 725.333c-152.917 0-277.333-124.416-277.333-277.333s124.416-277.333 277.333-277.333c152.917 0 277.333 124.416 277.333 277.333s-124.416 277.333-277.333 277.333v0zM884.437 824.107v0.021l-151.915-151.936c48.768-61.781 78.144-139.541 78.144-224.192 0-199.979-162.688-362.667-362.667-362.667s-362.667 162.688-362.667 362.667c0 199.979 162.688 362.667 362.667 362.667 84.629 0 162.411-29.376 224.171-78.144l206.144 206.144h60.352v-60.331l-54.229-54.229z"></path>
                                     </svg>
-                                    <input className="_1dasd" placeholder="Search city, area or locality" value=""/>
+                                    <input className="_1dasd"  placeholder="Search city, area or locality" value={location} onChange={handlelocation}/>
                                     <span className="_3UNpw">
                                         <button type="button" className="rui-3a8k1" role="button" tabIndex="0" data-aut-id="" title="">
                                             <svg width="24px" height="24px" viewBox="0 0 1024 1024" data-aut-id="icon" className="" fillRule="evenodd">
