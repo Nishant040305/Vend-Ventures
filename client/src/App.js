@@ -58,7 +58,7 @@ function App() {
       <MyForm />
       <Routes>
 
-          <Route path="/:searchTerm" element = {<Mainpage></Mainpage>}></Route>
+          <Route path="/:_" element = {<Mainpage></Mainpage>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/Chats" element={<Chats></Chats>}></Route>
 

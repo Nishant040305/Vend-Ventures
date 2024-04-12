@@ -20,8 +20,8 @@ const CarPost=()=>{
 
     const [des,setDes] = useState(
         {
-            Brand:"",
-            Description:"",
+            brand:"",
+            description:"",
             year:"",
             fuel:"",
             transmission:"",
@@ -35,7 +35,7 @@ const CarPost=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        Description:{}
+        description:{}
  })
  const sendRequest = async () => {
     try {
@@ -102,7 +102,7 @@ formData.append('user', userJson);
         })
         setUser({
             ...user,
-            ["Description"]:des
+            ["description"]:des
         })
         //console.log(user);
     }
@@ -119,10 +119,10 @@ formData.append('user', userJson);
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="Brand"  required>Brand*</label>
-                <select name="Brand" id="Brand">
-                    <option value={des.Brand} onChange={handleChangeD}></option>
-                    <optgroup label="Popular Brand">
+                <label for="brand"  required>brand*</label>
+                <select name="brand" id="brand">
+                    <option value={des.brand} onChange={handleChangeD}></option>
+                    <optgroup label="Popular brand">
                         <option value="Maruti Suzuki">Maruti Suzuki</option>
                         <option value="Hyundai">Hyundai</option>
                         <option value="Tata">Tata</option>
@@ -130,7 +130,7 @@ formData.append('user', userJson);
                         <option value="Toyota">Toyota</option>
                         <option value="Honda">Honda</option>
                     </optgroup>
-                    <optgroup label="All Brand">
+                    <optgroup label="All brand">
                         <option value="BYD">BYD</option>
                         <option value="Audi">Audi</option>
                         <option value="Ambassador">Ambassador</option>
@@ -176,8 +176,8 @@ formData.append('user', userJson);
                 <input type="text" name="title" id="title" value={user.title} onChange={handleChange}placeholder="Mention the key features of your item" required>
             </input></div>
             <div class="labels">
-                <label for="Description">Description</label>
-                <textarea name="Description" id="Description" placeholder="Include condition, features, and reason for selling" onChange={handleChangeD}value={des.Description}rows="4"></textarea>
+                <label for="description">description</label>
+                <textarea name="description" id="description" placeholder="Include condition, features, and reason for selling" onChange={handleChangeD}value={des.description}rows="4"></textarea>
             </div>
             <div class="labels">
                 <h2 class="head2">SET A PRICE</h2>

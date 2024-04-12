@@ -22,7 +22,7 @@ const productSchema = new Schema(
             type:String,
             required:true
         },
-        Description:{
+        description:{
             type:Object,
             default:{}, // {desc, area, ...}
         },

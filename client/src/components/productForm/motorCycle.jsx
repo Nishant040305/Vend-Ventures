@@ -19,8 +19,8 @@ const MotorCycle=()=>{
 
     const [des,setDes] = useState(
         {
-            Brand:"",
-            Description:"",
+            brand:"",
+            description:"",
             km:"",
             year:"",
         }
@@ -32,7 +32,7 @@ const MotorCycle=()=>{
         title:"",
         location:"",
         phoneNumber:"",
-        Description:{}
+        description:{}
  })
  const sendRequest=async()=>{
     //console.log(user);
@@ -91,7 +91,7 @@ const MotorCycle=()=>{
         })
         setUser({
             ...user,
-            ["Description"]:des
+            ["description"]:des
         })
         //console.log(user);
     }
@@ -108,8 +108,8 @@ const MotorCycle=()=>{
         <div class="content">
             <h2 class="head2">INCLUDE SOME DETAILS</h2>
             <div class="labels">
-                <label for="Brand"  required>Brand*</label>
-                <select name="Brand" value={des.Brand} onChange={handleChangeD} id="Brand">
+                <label for="brand"  required>brand*</label>
+                <select name="brand" value={des.brand} onChange={handleChangeD} id="brand">
                     <option value=""></option>
                     
                         <option value="Harley-Davidson">Harley-Davidson</option>
@@ -135,7 +135,7 @@ const MotorCycle=()=>{
                 </select>
             </div>
             <div class="labels">
-                <label for="year" value={des.Brand} onChange={handleChangeD}  >Year*</label>
+                <label for="year" value={des.brand} onChange={handleChangeD}  >Year*</label>
                 <input type="number" name="year" id="year" required></input>
             </div>
            
@@ -148,8 +148,8 @@ const MotorCycle=()=>{
                 <input type="text"value={user.title} onChange={handleChange} name="title" id="title" placeholder="Mention the key features of your item" required>
             </input></div>
             <div class="labels">
-                <label for="Description"  value={des.Description} onChange={handleChangeD}>Description</label>
-                <textarea name="Description" id="Description" placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
+                <label for="description"  value={des.description} onChange={handleChangeD}>description</label>
+                <textarea name="description" id="description" placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
             </div>
             <div class="labels">
                 <h2 class="head2">SET A PRICE</h2>

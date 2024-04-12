@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React,{useState,useEffect} from "react";
 import {useNavigate,useParams} from "react-router-dom";
 import "./Navbar.css";
 import axios from "axios";
 import './loginpage.css';
 
-const DEBUG = true;
+const DEBUG = false;
 
 function toggle(){
     var element = document.getElementById("test");
@@ -31,32 +32,24 @@ const Navbar =()=>{
     const [seen,setSeen] = useState(false);
     const [userdata, setUserdata] = useState({});
     const navigate = useNavigate();
-    const [query,setQurey] = useState();
+    const [query,setQuery] = useState();
     const showAdd = ()=>{
         navigate('/post',{ state: userdata });
     }
-    const searchTerm = ()=>{
-        // let params = window.location.href.split('/')[-1];
-        // if (params[0] != '?') params = `?s=${JSON.stringify(query)}`;
-        // else {
-        //     let args = {};
-        //     params.slice(1).split('&').forEach(i=>{
-        //         let j = i.split('=');
-        //         args[j[0]] = j[1];
-        //     });
-        //     args["s"] = JSON.stringify(query);
-        //     params = "?";
-        //     Object.keys(args).forEach(i => {
-        //         params += (i + "=" + args[i]);
-        //     })
-        // };
-        // navigate(`/${params}`);
-        navigate(`/${JSON.stringify(query)}`)
+
+    // URLSearchParams
+    const searchTerm = () => {
+        let params = new URLSearchParams(window.location.search);
+        if (params.has("s")) {
+            params.set("s", query);
+        } else {
+            params.append("s", query);
+        }
+        navigate(`/?${params.toString()}`)
     }
-    
-    
+
     const handleSearch =(e)=>{
-        setQurey(e.target.value);
+        setQuery(e.target.value);
     }
     const showCart =()=>{
         navigate(`/cart`,{state:userdata})
@@ -80,7 +73,7 @@ const Navbar =()=>{
     const visible = (e) => {
         let ele = document.getElementsByClassName("header-bottom-bar");
         for(let i = 0; i < ele.length; i++) {
-            if(ele[i].style.visibility== "visible"){
+            if(ele[i].style.visibility === "visible"){
                 ele[i].style.visibility = "hidden";
             }
             else{

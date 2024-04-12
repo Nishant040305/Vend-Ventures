@@ -96,12 +96,12 @@ const Product =()=>{
             {info.dt&&info.dt.images.map((info, index) => (<img src={info} onClick={()=>img(info)}></img>))}
 
             </div>
-            <div className="product-Description">
-                <h3>Description</h3>
+            <div className="product-description">
+                <h3>description</h3>
                 {info.dt&&<div>
-                {Object.keys(info.dt.Description).map((key, index) => (
-                <div  className="Description-data" key={index}>
-                    <strong>{key}:</strong> {info.dt.Description[key]}
+                {Object.keys(info.dt.description).map((key, index) => (
+                <div  className="description-data" key={index}>
+                    <strong>{key}:</strong> {info.dt.description[key]}
                 </div>
             ))}
            
@@ -120,7 +120,7 @@ const Product =()=>{
             </div>
             
             <h4 className="align-left "> <small className="color-change-product">Rs.</small>{info.dt&&info.dt.price}</h4>
-            <p className="align-left color-change-product" >{info.dt&&info.dt.Description.Description}</p>
+            <p className="align-left color-change-product" >{info.dt&&info.dt.description.description}</p>
             <p className="align-left color-change-product ">{info.dt&&info.dt.location}</p>
             <hr/>
             <div className="profile">
