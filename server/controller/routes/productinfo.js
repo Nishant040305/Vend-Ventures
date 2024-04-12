@@ -56,7 +56,7 @@ module.exports = (app) => {
         const pushObj = {};
         pushObj[res.body.pushTo] = res.body.pushValue;
         try {
-            channel = await userdb.findOneAndUpdate(
+            user = await userdb.findOneAndUpdate(
                 { 
                     userId: req.body.id
                 },
@@ -64,9 +64,8 @@ module.exports = (app) => {
                     $push: pushObj
                 },
             );
-            // console.log('Chat document:', channel);
         } catch (error) {
-            console.error('Error finding or creating chat document:', error);
+            console.error('Error:', error);
         }
 
         io.emit('message', data);
@@ -100,6 +99,18 @@ module.exports = (app) => {
             if (!prod.userId) prod.userId = req.user ? req.user._id : "test";
             const Prod = new productdb(prod);
             const ProdRet = await Prod.save();
+            try {
+                user = await userdb.findOneAndUpdate(
+                    { 
+                        userId: req.user._id
+                    },
+                    {  
+                        $push: {products: ProdRet._id}
+                    },
+                );
+            } catch (error) {
+                console.error('Error:', error);
+            }
             res.status(200).json({ message: "OK", _id: ProdRet._id, data: ProdRet });
             
         } catch (e) {
