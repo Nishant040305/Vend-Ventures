@@ -71,6 +71,28 @@ const Product =()=>{
         }})
     }
 
+    // cart
+    async function addToCart() {
+        try{
+            const response = await axios.post('http://localhost:5000/userPush/', {
+                pushTo: "cart",
+                pushValue: productID,
+                id: state.userId
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if(response.data.error){
+                console.log(response.data.error);
+            }
+        }
+        catch(error){
+            console.log(error.message);
+        }
+    }
+
+
     function img(anything) {
         document.querySelector('.slide').src = anything;
     }
@@ -186,8 +208,8 @@ const Product =()=>{
             <button className="product-chat-bag" onClick={fetchChat}>Chat with seller</button>
             <h5  className="align-left " style={{marginTop:4}}>Posted in</h5>
             <br/>
-            <div className="color-change-product align-left" style={{marginLeft:50}}><img src="/location.png" width="30px" height="30px"></img>{info.dt&&info.dt.location}</div>
-            <button className="product-chat-bag" style={{marginTop:3}}>Add to Bag</button>
+            <div className="color-change-product align-left" style={{marginLeft:50}}>{info.dt&&info.dt.location}</div>
+            <button className="product-chat-bag" onClick={()=>{addToCart()}}>Add to Bag</button>
             </div>
             
           </div>
