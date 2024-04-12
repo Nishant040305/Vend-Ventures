@@ -26,7 +26,7 @@ async function sendEmail(userEmail, otp) {
         service: 'gmail',
         auth: {
             user: 'nm.20233205@gmail.com',
-            pass: 'iaga pdtl ofyw jyjv'
+            pass: 'ivns znwe yqmo ddxb'
         }
     });
 
@@ -138,6 +138,7 @@ app.get("/login/sucess",async(req,res)=>{
     }
 })
 app.post("/loginEmail",async(req,res)=>{
+    console.log(req.body);
     try{
         let var_ = generateOtp();
         sendEmail(req.body.email,var_)
@@ -146,8 +147,8 @@ app.post("/loginEmail",async(req,res)=>{
     catch(error){
         res.status(400).json({message:"email not send"})
     }
-    
 })
+
 app.get("/logout",(req,res,next)=>{
     req.logout((err)=>{
         if(err){

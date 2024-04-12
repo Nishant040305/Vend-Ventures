@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React,{useState,useEffect} from "react";
-import {useNavigate,useParams} from "react-router-dom";
+import {useAsyncValue, useNavigate,useParams} from "react-router-dom";
 import "./Navbar.css";
 import axios from "axios";
 import './loginpage.css';
@@ -46,8 +46,9 @@ const Navbar =()=>{
     }
     const login_email = async()=>{
         try {
-            const response = await axios.post('http://localhost:5000/loginEmail/',{email:email
-                ,headers: {
+            console.log("kjsdlf");
+            const response = await axios.post('http://localhost:5000/loginEmail/',{email:email},
+                {headers: {
                     'Accept': 'application/json',
                 }
             });
@@ -56,10 +57,12 @@ const Navbar =()=>{
                 throw new Error('Failed to Send Email');
             }
             else{
-                setvartp(response.otp)
+                setvartp(response.data.otp) // corrected from response.otp to response.data.otp
+                setOtpMessage(1)
             }
         } catch (e) { console.error(e) }
     }
+    
     // URLSearchParams
     const search = () => {
         let params = new URLSearchParams(window.location.search);
@@ -150,10 +153,16 @@ const Navbar =()=>{
     const handleOtp =(e)=>{
         setOtp(e.target.value);
     }
-    const login_Confirm =()=>{
+    const login_Confirm =async()=>{
         if(varotp==otp){
+           
+                try {
+                    const response = await axios.post("http://localhost:5000/usercreate",{email:email,displayName:name});
+                    setUserdata(response.data.user);
+                } catch (error) {
+                    
+                }
             
-
         }
     }
     const windowWidth = useWindowWidth();
@@ -230,11 +239,11 @@ const Navbar =()=>{
                     <input className ="Login-email-input" onChange={handleName}placeholder="     Enter your DisplayName" value={name}></input>
                     <input className ="Login-email-input" onChange={handleOtp}placeholder="     Enter your email" value={otp}></input>
 
-                        <button className=" btn Login-email-buttton" onClick={()=>{login_Confirm()}}>Continue</button>
+                        <button className=" btn Login-email-buttton" onClick={()=>{login_Confirm()}}>Confirm</button>
                     </div>:
                     <div className="Login-content">
                         <input className ="Login-email-input" onChange={handleEmail}placeholder="     Enter your email" value={email}></input>
-                        <button className=" btn Login-email-buttton" onClick={()=>{otpConfirm()}}>Continue</button>
+                        <button className=" btn Login-email-buttton" onClick={()=>{login_email()}}>Continue</button>
                     </div>}
 
                 </div>
