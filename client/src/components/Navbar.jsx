@@ -46,7 +46,7 @@ const Navbar =()=>{
     }
     const login_email = async()=>{
         try {
-            console.log("kjsdlf");
+            // console.log("kjsdlf");
             const response = await axios.post('http://localhost:5000/loginEmail/',{email:email},
                 {headers: {
                     'Accept': 'application/json',

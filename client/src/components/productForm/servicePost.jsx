@@ -95,67 +95,67 @@ const Services=()=>{
         //console.log(user);
     }
     return(
-        <div class="services">
+        <div className="services">
         <div>
-   <h1 class="first">POST YOUR AD</h1>
-   <div class="wood">
-    <div class="first-head">
-        <h2 class="first2">SELECTED CATEGORY</h2>
-        <span class="applied">SERVICES<a href="#"><b>Change</b></a></span>
-        <span class="applied"></span>
+   <h1 className="first">POST YOUR AD</h1>
+   <div className="wood">
+    <div className="first-head">
+        <h2 className="first2">SELECTED CATEGORY</h2>
+        <span className="applied">SERVICES<a href="#"><b>Change</b></a></span>
+        <span className="applied"></span>
     </div>
-    <div class="all">
-        <h2 class="first2">INCLUDE SOME DETAILS</h2>
+    <div className="all">
+        <h2 className="first2">INCLUDE SOME DETAILS</h2>
        
-        <div class="paid-service">
+        <div className="paid-service">
             <label for="title">Ad title*</label>
             <input type="text" name="title" id="title" placeholder="Mention the key features of your item"value={user.title} onChange={handleChange}required>
         </input></div>
-        <div class="paid-service">
+        <div className="paid-service">
             <label for="description">description</label>
             <textarea name="description" id="description"value={des.description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
         </div>
-        <div class="paid-service">
-            <h2 class="first2">SET A PRICE</h2>
+        <div className="paid-service">
+            <h2 className="first2">SET A PRICE</h2>
             <label for="price">Price*</label>
             <input type="text" name="price" id="price"value={user.price} onChange={handleChange}placeholder="In rupees" required></input>
         </div>
-        <div class="paid-service">
-            <h2 class="first2">UPLOAD PHOTOS</h2>
-            <div class="photo-upload">
-                <div class="service-upload
+        <div className="paid-service">
+            <h2 className="first2">UPLOAD PHOTOS</h2>
+            <div className="photo-upload">
+                <div className="service-upload
 ">
                         
-                    <label class="service-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"/><input  class="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  class="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="service-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
             </div>
                     
             </div>            </div>
-        <div class="paid-service">
-            <h2 class="first2">CONFIRM YOUR LOCATION</h2>
+        <div className="paid-service">
+            <h2 className="first2">CONFIRM YOUR LOCATION</h2>
             <label for="location">Location*</label>
             <input type="text" name="location" id="location"value={user.location} onChange={handleChange} required></input>
         </div>
-        <div class="paid-service">
-            <h2 class="first2">REVIEW YOUR DETAILS</h2>
+        <div className="paid-service">
+            <h2 className="first2">REVIEW YOUR DETAILS</h2>
                 <div style={{display:"flex"}}>
-                <img class="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
-                <div class="displayName-form">{state.displayName}</div>
+                <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
+                <div className="displayName-form">{state.displayName}</div>
                 </div>
         </div>
-        <div class="paid-service">
+        <div className="paid-service">
             <label for="phone">Phone Number</label>
             <input type="tel" name="phoneNumber" id="phone"value={user.phoneNumber} onChange={handleChange}></input>
         </div>
             
         
-        <div class="on-btn">
+        <div className="on-btn">
             <button type="submit" onClick={sendRequest}>Post now</button>
         </div>
     </div>

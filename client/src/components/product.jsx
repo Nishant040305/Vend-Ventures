@@ -47,7 +47,7 @@ const Product =()=>{
                     if (response.data.error) {
                         throw new Error(response.data.error);
                     } else {
-                        console.log("NEW CHAT", response.data);
+                        // console.log("NEW CHAT", response.data);
                         openChat(response.data._id, response.data.channel)
                     }
                 } catch (error) {
@@ -55,7 +55,7 @@ const Product =()=>{
                 }
             }
             else{
-                console.log("LOAD CHAT", response.data)
+                // console.log("LOAD CHAT", response.data)
                 openChat(response.data.channel._id, response.data.channel)
             }
         }
@@ -64,6 +64,7 @@ const Product =()=>{
         }
     }
     function openChat(cid, ch) {
+        console.log(info.seller);
         navigate(`/chat/${cid}`, {state: {
             owner: info.seller,
             user: state,
@@ -176,13 +177,12 @@ const Product =()=>{
                         </div>
                         <div className="product-description">
                             <h3>description</h3>
-                            {info.dt&&<div>{Object.keys(info.dt.description).map((key, index) => (
-                                            <div  className="description-data" key={index}>
-                                                <strong>{key}:</strong> {info.dt.description[key]}
-                                            </div>
-                                            ))}
-            
-                                        </div>}
+                            {info.dt && <div>{Object.keys(info.dt.description).map((key) => (
+    <div className="description-data" key={key}>
+        <strong>{key}:</strong> {info.dt.description[key]}
+    </div>
+))}</div>}
+
 
             </div>
           </div>

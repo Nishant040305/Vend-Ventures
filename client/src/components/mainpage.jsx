@@ -38,7 +38,7 @@ const Card=(props)=>{
         <div className="mainpage-cards card">
             <img className="card-img-top" alt="..."src={props.images} onClick={async () => await onCardClick()}></img>
             <div className="card-body">
-            <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>{props.title}</div><img class="heart" id={`${props.id}`}  src="heart.png" onClick={(e)=>{likeDislike(props.id)}}></img></div>
+            <div className="card-title"><div style={{fontWeight:700, fontSize:25}}>{props.title}</div><img className="heart" id={`${props.id}`}  src="heart.png" onClick={(e)=>{likeDislike(props.id)}}></img></div>
             
             
             <div className="cards-discription card-text">
@@ -78,7 +78,7 @@ const Mainpage=()=>{
                 throw new Error(response.data.error);
             }
             else{
-                console.log(response.data)
+                // console.log(response.data)
                 setProduct(response.data);
             }
         }
@@ -94,7 +94,17 @@ const Mainpage=()=>{
         <div className="mainpage">
             <Navbar></Navbar>
             <div className="mainpage-card-container " id = "test">
-            {product.map((info, index) => (<Card images={info.images[0] || "vendVentures.png"} prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></Card>))}
+            {product.map((info, index) => (
+    <Card 
+        key={info._id || index} 
+        images={info.images[0] || "vendVentures.png"} 
+        prize={info.price} 
+        location={info.location} 
+        description={info.description.description} 
+        title={info.title} 
+        id={info._id}
+    />
+))}
             </div>
         <Footer></Footer>
         </div>

@@ -95,64 +95,64 @@ const Books=()=>{
         //console.log(user);
     }
     return(
-        <div class="books">
+        <div className="books">
         <div>
-   <h1 class="enter">POST YOUR AD</h1>
-   <div class="entries">
-    <div class="enter-head">
-        <h2 class="enter2">SELECTED CATEGORY</h2>
-        <span class="book-sport">Books, Sports, Hobbies<a href="#"><b>Change</b></a></span>
-        <span class="book-sport"></span>
+   <h1 className="enter">POST YOUR AD</h1>
+   <div className="entries">
+    <div className="enter-head">
+        <h2 className="enter2">SELECTED CATEGORY</h2>
+        <span className="book-sport">Books, Sports, Hobbies<a href="#"><b>Change</b></a></span>
+        <span className="book-sport"></span>
     </div>
-    <div class="middle">
-        <h2 class="enter2">INCLUDE SOME DETAILS</h2>
+    <div className="middle">
+        <h2 className="enter2">INCLUDE SOME DETAILS</h2>
        
-        <div class="book-names">
+        <div className="book-names">
             <label for="title">Ad title*</label>
             <input type="text" name="title" id="title" placeholder="Mention the key features of your item"value={user.title} onChange={handleChange}required>
         </input></div>
-        <div class="book-names">
+        <div className="book-names">
             <label for="description">description</label>
             <textarea name="description" id="description"value={des.description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
         </div>
-        <div class="book-names">
-            <h2 class="enter2">SET A PRICE</h2>
+        <div className="book-names">
+            <h2 className="enter2">SET A PRICE</h2>
             <label for="price">Price*</label>
             <input type="text" name="price" id="price"value={user.price} onChange={handleChange}placeholder="In rupees" required></input>
         </div>
-        <div class="book-names">
-            <h2 class="enter2">UPLOAD PHOTOS</h2>
-            <div class="books-upload">
-                <div class="books-upload">
+        <div className="book-names">
+            <h2 className="enter2">UPLOAD PHOTOS</h2>
+            <div className="books-upload">
+                <div className="books-upload">
                         
-                    <label class="booksfile-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px" /><input  class="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  class="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png"onChange={(e)=>handleImageChange(e)}  /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}  /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
-                    <label class="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px" /><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png"onChange={(e)=>handleImageChange(e)}  /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}  /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
+                    <label className="booksfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)} /></label>
             </div>           </div>
-        <div class="book-names">
-            <h2 class="enter2">CONFIRM YOUR LOCATION</h2>
+        <div className="book-names">
+            <h2 className="enter2">CONFIRM YOUR LOCATION</h2>
             <label for="Location">Location*</label>
             <input type="text" name="Location" id="Location"value={user.Location} onChange={handleChange} required></input>
         </div>
-        <div class="book-names">
-            <h2 class="enter2">REVIEW YOUR DETAILS</h2>
+        <div className="book-names">
+            <h2 className="enter2">REVIEW YOUR DETAILS</h2>
                 <div style={{display:"flex"}}>
                 <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
                 <div className="displayName-form">{state.displayName}</div>
                 </div>
         </div>
-        <div class="book-names">
+        <div className="book-names">
             <label for="phone">Phone Number</label>
             <input type="tel" name="phoneNumber" id="phone"value={user.phoneNumber} onChange={handleChange}></input>
         </div>
             
         
-        <div class="click-btn">
+        <div className="click-btn">
             <button type="submit" onClick={sendRequest}>Post now</button>
         </div>
     </div>

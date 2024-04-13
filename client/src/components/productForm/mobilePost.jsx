@@ -43,8 +43,8 @@ Object.entries(images).forEach(([key, image]) => {
 
     // Use the key as the field name
 });
-console.log(formData);
-console.log(user);
+// console.log(formData);
+// console.log(user);
 const userJson = JSON.stringify(user);
 formData.append('user', userJson);
 

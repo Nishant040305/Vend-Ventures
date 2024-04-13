@@ -69,7 +69,7 @@ const Chats = ()=>{
             if (response.data.error) {
                 throw new Error(response.data.error);
             } else {
-                console.log(response.data);
+                // console.log(response.data);
                 setRec(response.data.data);
             }
         } catch (error) {
@@ -105,10 +105,10 @@ const Chats = ()=>{
             <Navbar/>
             <div className="chat-collection">
                 <div className="main-info">
-                    <img src="/images/img1.jpg" className="rounded-circle main-info-chat"></img> 
-                    {Reciever?<div class="users-info">
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;{owner.displayName}</div>
-                    <div className="whitedata"><img src="/user_.png" className="sticker-chat"></img>&nbsp;{Reciever.displayName}</div>
+                    <img src={Reciever.image} className="rounded-circle main-info-chat"></img> 
+                    {Reciever?<div className="users-info">
+                    <div className="whitedata"><img src={owner.image||"/user_.png"} className=" rounded-circle sticker-chat"></img>&nbsp;{owner.displayName}</div>
+                    <div className="whitedata"><img src={Reciever.image||"/user_.png"} className=" rounded-circle sticker-chat"></img>&nbsp;{Reciever.displayName}</div>
                     </div>:<div></div>}
                     </div>
                 <div className="chatting">

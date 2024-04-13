@@ -1,5 +1,6 @@
 import React from "react";
 import "./product.css";
+import {Link} from "react-router-dom";
 const Footer =()=>{
     return(
         <div className="product">
@@ -55,16 +56,16 @@ const Footer =()=>{
                 <p className="footer-links-head"><strong>FOLLOW US</strong></p>
                 <div className="social-footer-links" style={{width:600}}>
                     <span className="social-footer-links">
-                        <i className="fa-brands fa-facebook"></i>
+                    <a href="https://www.instagram.com/nishant040305" > <i className="fa-brands fa-facebook" ></i></a>
                     </span>
                     <span className="social-footer-links">
-                        <i className="fa-brands fa-twitter"></i>
+                    <a href="https://www.instagram.com/nishant040305" >  <i className="fa-brands fa-twitter"></i></a>
                     </span>
                     <span className="social-footer-links">
-                        <i className="fa-brands fa-youtube"></i>
+                    <a href="https://www.instagram.com/nishant040305" > <i className="fa-brands fa-youtube"></i></a>
                     </span>
                     <span className="social-footer-links">
-                        <i className="fa-brands fa-square-instagram"></i>
+                    <a href="https://www.instagram.com/nishant040305" ><i className="fa-brands fa-square-instagram"/></a>
                     </span>
                 </div>
 

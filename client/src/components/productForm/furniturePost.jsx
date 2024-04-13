@@ -95,67 +95,67 @@ const Furniture=()=>{
         //console.log(user);
     }
     return(
-        <div class="furniture">
+        <div className="furniture">
         <div>
-   <h1 class="up">POST YOUR AD</h1>
-   <div class="wood">
-    <div class="up-head">
-        <h2 class="up2">SELECTED CATEGORY</h2>
-        <span class="products">Furniture-Tables,chairs,cupboards<a href="#"><b>Change</b></a></span>
-        <span class="products"></span>
+   <h1 className="up">POST YOUR AD</h1>
+   <div className="wood">
+    <div className="up-head">
+        <h2 className="up2">SELECTED CATEGORY</h2>
+        <span className="products">Furniture-Tables,chairs,cupboards<a href="#"><b>Change</b></a></span>
+        <span className="products"></span>
     </div>
-    <div class="inner">
-        <h2 class="up2">INCLUDE SOME DETAILS</h2>
+    <div className="inner">
+        <h2 className="up2">INCLUDE SOME DETAILS</h2>
        
-        <div class="tables">
+        <div className="tables">
             <label for="title">Ad title*</label>
             <input type="text" name="title" id="title" placeholder="Mention the key features of your item"value={user.title} onChange={handleChange}required>
         </input></div>
-        <div class="tables">
+        <div className="tables">
             <label for="description">description</label>
             <textarea name="description" id="description"value={des.description} onChange={handleChangeD} placeholder="Include condition, features, and reason for selling" rows="4"></textarea>
         </div>
-        <div class="tables">
-            <h2 class="up2">SET A PRICE</h2>
+        <div className="tables">
+            <h2 className="up2">SET A PRICE</h2>
             <label for="price">Price*</label>
             <input type="text" name="price" id="price"value={user.price} onChange={handleChange}placeholder="In rupees" required></input>
         </div>
-        <div class="tables">
-            <h2 class="up2">UPLOAD PHOTOS</h2>
-            <div class="wood-upload">
-                <div class="woodfile-upload
+        <div className="tables">
+            <h2 className="up2">UPLOAD PHOTOS</h2>
+            <div className="wood-upload">
+                <div className="woodfile-upload
 ">
                         
-                    <label class="woodfile-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"/><input  class="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  class="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
-                    <label class="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input class="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d" ><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="1"accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input  className="file-upload" type="file" name="2" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="3" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="4" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="5" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="6" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="7" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
+                    <label className="woodfile-upload-d"><img src="/camera-icon-54.png" width="25px" height="20px"/><input className="file-upload"  type="file" name="8" accept="image/jpg, image/jpeg, image/png" onChange={(e)=>handleImageChange(e)}/></label>
             </div>
                     
             </div>            </div>
-        <div class="tables">
-            <h2 class="up2">CONFIRM YOUR LOCATION</h2>
+        <div className="tables">
+            <h2 className="up2">CONFIRM YOUR LOCATION</h2>
             <label for="location">Location*</label>
             <input type="text" name="location" id="location"value={user.location} onChange={handleChange} required></input>
         </div>
-        <div class="tables">
-            <h2 class="up2">REVIEW YOUR DETAILS</h2>
+        <div className="tables">
+            <h2 className="up2">REVIEW YOUR DETAILS</h2>
                 <div style={{display:"flex"}}>
-                <img class="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
-                <div class="displayName-form">{state.displayName}</div>
+                <img className="rounded-circle form-image" style={{marginLeft:30}}src={state.image}></img>
+                <div className="displayName-form">{state.displayName}</div>
                 </div>
         </div>
-        <div class="tables">
+        <div className="tables">
             <label for="phone">Phone Number</label>
             <input type="tel" name="phoneNumber" id="phone"value={user.phoneNumber} onChange={handleChange}></input>
         </div>
             
         
-        <div class="last-btn">
+        <div className="last-btn">
             <button type="submit" onClick={sendRequest}>Post now</button>
         </div>
     </div>
