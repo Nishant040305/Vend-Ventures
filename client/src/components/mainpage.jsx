@@ -16,7 +16,6 @@ const Card=(props)=>{
             if (!response.data.user && !DEBUG) {
                 document.getElementById("loginBtn").click();
             } else {
-                // console.log(response.data.user);
                 navigate(`/product/${props.id}`, {state:response.data.user});
             }
         } catch (err) {
@@ -78,12 +77,11 @@ const Mainpage=()=>{
                 throw new Error(response.data.error);
             }
             else{
-                // console.log(response.data)
                 setProduct(response.data);
             }
         }
         catch(error){
-            //console.log(error.message);
+            console.log(error.message);
         }
     }
     

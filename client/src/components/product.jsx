@@ -20,7 +20,6 @@ const Product =()=>{
     const {productID} = useParams();
     
     async function fetchChat() {
-        // console.log(info.seller);
         try{
             const response = await axios.post('http://localhost:5000/getChat/', {
                 productId: productID,
@@ -47,7 +46,6 @@ const Product =()=>{
                     if (response.data.error) {
                         throw new Error(response.data.error);
                     } else {
-                        // console.log("NEW CHAT", response.data);
                         openChat(response.data._id, response.data.channel)
                     }
                 } catch (error) {
@@ -55,7 +53,6 @@ const Product =()=>{
                 }
             }
             else{
-                // console.log("LOAD CHAT", response.data)
                 openChat(response.data.channel._id, response.data.channel)
             }
         }
@@ -64,7 +61,6 @@ const Product =()=>{
         }
     }
     function openChat(cid, ch) {
-        console.log(info.seller);
         navigate(`/chat/${cid}`, {state: {
             owner: info.seller,
             user: state,
@@ -107,7 +103,6 @@ const Product =()=>{
         line.style.background = change;
     }
     const userInfo = async()=>{
-        // console.log("USERINFO")
         try {
             const response_ = await axios.post('http://localhost:5000/userinfo/', {id: `${dt2.userId}`,
                 headers: {
@@ -118,7 +113,6 @@ const Product =()=>{
                 throw new Error('Failed to fetch data');
             }
             const data_ = response_.data;
-            // console.log(data_)
             if (data_.error) {
                 throw new Error(data_.error);
             } else {
@@ -127,7 +121,6 @@ const Product =()=>{
                     dt:dt2,
                     seller:seller2
                 })
-                // console.log(dt)
   
             }
         } catch (e) { console.error(e) }
@@ -139,7 +132,6 @@ const Product =()=>{
                     'Accept': 'application/json',
                 }
             });
-            // console.log(response.data.data)
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }

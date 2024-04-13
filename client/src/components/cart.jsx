@@ -5,10 +5,30 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 const CartItem=(props)=>{
+    const Remove = async(id,userid) =>{
+        try {
+            const response_ = await axios.post('http://localhost:5000/removeCart/', {userid:userid,id: id,
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            if (response_.status !== 200) {
+                throw new Error('Failed to fetch data');
+            }
+            const data_ = response_.data;
+            if (data_.error) {
+                throw new Error(data_.error);
+            } else {
+                
+
+                
+            }
+        } catch (e) { console.error(e) }
     
+    }
     return(
         <div className="cart-boxs">
-        <img src={props.image} className="cart-image"></img>
+        <img src={props.images} className="cart-image"></img>
                 <div className="cart-data">
                     <div className="cart-title">
                        <strong> {props.title}</strong>
@@ -27,16 +47,17 @@ const CartItem=(props)=>{
                                         </div>}
                     </div>       
                                   
-                    <button className="btn btn-danger remove">Remove</button>
 
 
                 </div>
                 <div className="cart-sellerinfo">
-                    <div>Seller information</div>
-                    <img  src="/images/img1.jpg" className="rounded-circle seller-info-cart"></img>
-                    <div>Nishant Mohan</div>
+                    <img  src={props.user_image} className="rounded-circle seller-info-cart"></img>
+                    <div>{props.user_name}</div>
                     <div>{props.phoneNumber}</div>
+
              </div>
+             <button className="btn btn-danger remove" onClick={()=>{Remove(props.id,props.userid)}}>Remove</button>
+
         </div>
     )
 }
@@ -44,6 +65,10 @@ const Cart = () =>{
     const {state}=useLocation();
     const [products,setProduct] = useState([]);
     const [userdata,setUserdata] = useState();
+    const [info,setInfo] = useState({
+        products:[],
+        userdata:{},
+    })
     const varu = [];
     const userInfo = async()=>{
         try {
@@ -59,10 +84,14 @@ const Cart = () =>{
             if (data_.error) {
                 throw new Error(data_.error);
             } else {
-                setUserdata(data_.data);
-                const productPromises = data_.data.map(p => fetchProduct(p));
+                
+
+                const productPromises = data_.data.cart.map(p => fetchProduct(p));
                 const products = await Promise.all(productPromises);
-                setProduct(products);
+                setInfo({
+                    products:products,
+                    userdata:data_.data
+                })
             }
         } catch (e) { console.error(e) }
     }
@@ -78,7 +107,6 @@ const Cart = () =>{
                     'Accept': 'application/json',
                 }
             });
-            // console.log(response.data.data)
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }
@@ -93,14 +121,7 @@ const Cart = () =>{
   
     }
     useEffect(() => {
-        const fetchData = async () => {
-            await userInfo();
-            console.log(userdata);
-            const productPromises = userdata&&userdata.map(p => fetchProduct(p));
-            const products = await Promise.all(productPromises);
-            setProduct(products);
-        };
-        fetchData();
+        userInfo();
     }, []);
     
     return(
@@ -108,11 +129,11 @@ const Cart = () =>{
             <Navbar></Navbar>
 
             <div className="cart-box">
-            {products&&products.map((info, index) => (<CartItem images={info.images[0] || "vendVentures.png"} prize={info.price} location={info.location} description={info.description.description} title={info.title} id={info._id}></CartItem>))}
+            {info&&info.products.map((info_, index) => (<CartItem userid ={info.userdata.userId}user_name={info.userdata.displayName} phoneNumber={info.userdata.phoneNumber}user_image={info.userdata.image} images={info_.images[0]||"/vendVentures.png"} price={info_.price} location={info_.location} description={info_.description} title={info_.title} id={info_._id}></CartItem>))}
 
 
             </div>
-
+        <Footer/>
         </div>
     )
 }

@@ -23,16 +23,15 @@ const Chats = ()=>{
     const [message_sending,setMess] = useState();
     const [Reciever, setRec] = useState(null);
     const {user, owner, channel} = state;
-    // console.log(state);
-
     socket.connect();
     useEffect(() => {
         fetchMessages();
         socket.on('message', (msg) => {
-            setMessages(prevMessages => [...prevMessages, {
-                content: msg.message.content,
-                sender: ((msg.user === user._id) ? "right" : "left")
-            }]);
+            if (msg.user === user._id || msg.user === owner._id || msg.user === Reciever._id) 
+                setMessages(prevMessages => [...prevMessages, {
+                    content: msg.message.content,
+                    sender: ((msg.user === user._id) ? "right" : "left")
+                }]);
         });
         return () => {
             socket.off('message');
@@ -58,6 +57,7 @@ const Chats = ()=>{
     async function fetchMessages() {
         // user display name
         try {
+            console.log(channel.userId)
             const response = await axios.post('http://localhost:5000/userinfo/', {
                 _id: channel.userId
             }, {
@@ -69,7 +69,7 @@ const Chats = ()=>{
             if (response.data.error) {
                 throw new Error(response.data.error);
             } else {
-                // console.log(response.data);
+                console.log(response.data.data);
                 setRec(response.data.data);
             }
         } catch (error) {
@@ -105,7 +105,7 @@ const Chats = ()=>{
             <Navbar/>
             <div className="chat-collection">
                 <div className="main-info">
-                    <img src={Reciever.image} className="rounded-circle main-info-chat"></img> 
+                    <img src={Reciever&&Reciever.image} className="rounded-circle main-info-chat"></img> 
                     {Reciever?<div className="users-info">
                     <div className="whitedata"><img src={owner.image||"/user_.png"} className=" rounded-circle sticker-chat"></img>&nbsp;{owner.displayName}</div>
                     <div className="whitedata"><img src={Reciever.image||"/user_.png"} className=" rounded-circle sticker-chat"></img>&nbsp;{Reciever.displayName}</div>

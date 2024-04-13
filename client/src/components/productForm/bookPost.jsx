@@ -34,7 +34,6 @@ const Books=()=>{
         description:{}
  })
  const sendRequest=async()=>{
-    //console.log(user);
     try {
         const formData = new FormData();
         formData.append('file',images);
@@ -58,7 +57,7 @@ const Books=()=>{
         }
     }
     catch(err){
-        //console.log(err.message);
+        console.log(err.message);
     }
     
 }
@@ -69,7 +68,6 @@ const Books=()=>{
             ...user,
             [name]: value
         })
-        //console.log(user);
     }
     const handleImageChange = e => {
         let name = `index${e.target.name}`;
@@ -92,7 +90,6 @@ const Books=()=>{
             ...user,
             ["description"]:des
         })
-        //console.log(user);
     }
     return(
         <div className="books">
