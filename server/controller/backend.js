@@ -138,7 +138,7 @@ app.get("/login/sucess",async(req,res)=>{
     }
 })
 app.post("/loginEmail",async(req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     try{
         let var_ = generateOtp();
         sendEmail(req.body.email,var_)

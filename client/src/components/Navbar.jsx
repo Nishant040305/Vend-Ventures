@@ -46,13 +46,11 @@ const Navbar =()=>{
     }
     const login_email = async()=>{
         try {
-            console.log("kjsdlf");
             const response = await axios.post('http://localhost:5000/loginEmail/',{email:email},
                 {headers: {
                     'Accept': 'application/json',
                 }
             });
-            // console.log(response.data.data)
             if (response.status !== 200) {
                 throw new Error('Failed to Send Email');
             }
@@ -173,7 +171,6 @@ const Navbar =()=>{
     const windowWidth = useWindowWidth();
     const isVisible = windowWidth >=1121 ;
     
-    // //console.log(userdata);
     return(
         <div className="header">
         <div className="dashboard-navbar">

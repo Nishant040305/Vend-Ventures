@@ -18,7 +18,7 @@ const upload = multer({
 module.exports = (app) => {
 
     app.post("/upload",upload.single('file'), async(req,res)=>{
-        console.log(req.file);
+        // console.log(req.file);
     });
 
     app.post("/usercreate", async (req, res) => {
@@ -50,7 +50,17 @@ module.exports = (app) => {
             res.status(500).json({ error: req.body.id});
         }
     });
-
+    app.post("/userInfo", async (req, res) => {
+        console.log(req.body);
+        try {
+            
+            let prod = await userdb.findById(req.body.id);
+            res.status(200).json({ message: "OK", _id: req.body.id, data: prod });
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({ error: req.body.id});
+        }
+    });
     app.post("/userpush", async (req, res) => {
         // body = {id, pushTo, pushValue}
         const pushObj = {};
@@ -64,14 +74,14 @@ module.exports = (app) => {
                     $push: pushObj
                 },
             );
-            console.log(user);
+            // console.log(user);
         } catch (error) {
             console.error('Error:', error);
         }
     })
 
     app.post("/productinfo", async (req, res) => {
-        console.log(res.body);
+        // console.log(res.body);
         try {
             let prod = await productdb.findOne({ _id: req.body.id });
             res.status(200).json({ message: "OK", _id: req.body.id, data: prod });
@@ -87,15 +97,15 @@ module.exports = (app) => {
 
         try {
             let prod = JSON.parse(req.body.user);
-            console.log(prod)
+            // console.log(prod)
             let images = req.files.map(file => {
                 let path = file.path.replace(/\\/g, '/');
                 let parts = path.split('/');
                 return [''].concat(parts.slice(-2)).join('/');
             });
-            console.log(images);
+            // console.log(images);
             prod.images = images;
-            console.log(prod);
+            // console.log(prod);
             if (!prod.userId) prod.userId = req.user ? req.user._id : "test";
             const Prod = new productdb(prod);
             const ProdRet = await Prod.save();
@@ -123,9 +133,9 @@ module.exports = (app) => {
         // filter by exact query object (returns all if no query)
         // returns Array
         try {
-            console.log(req.body);
+            // console.log(req.body);
             let query = req.body || {};
-            console.log(req.query);
+            // console.log(req.query);
             if (query.searchTerm) {
                 const searchTerm = new RegExp(req.body.searchTerm, 'i');
                 query.title = searchTerm;
@@ -144,7 +154,31 @@ module.exports = (app) => {
             res.status(500).json({ error: "Internal Server Error" });
         }
     });
-
+    app.post('/removeCart', async (req, res) => {
+        const userid = req.body.userid;
+        const productid = req.body.id;
+    
+        try {
+            // Find the user and update the cart
+            let user = await userdb.findOneAndUpdate(
+                { userId: userid },
+                { $pull: { cart: productid } },
+                { new: true }  // This option returns the updated document
+            );
+    
+            // Check if the user was found and updated
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+    
+            // Send the updated user document as a response
+            res.json(user);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: 'Server error' });
+        }
+    });
+    
     /*
 
             --- SAMPLE query object ---
